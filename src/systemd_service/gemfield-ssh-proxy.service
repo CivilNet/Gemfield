@@ -1,0 +1,13 @@
+# put this file into /etc/systemd/system on ubuntu 16.04
+[Unit]
+Description=gemfield ssh proxy
+
+[Service]
+EnvironmentFile=-/etc/gemfield/gemfield_ssh_proxy
+User=xguan005
+ExecStart=/usr/bin/ssh -oServerAliveInterval=100 -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -N -C -L ${LOCAL_SERVER}:${PROXY_SERVER} ${JUMPHOST_USER}@${JUMPHOST}
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
