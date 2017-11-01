@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DeepAIT Food Demo">
+    <meta name="author" content="Gemfield">
+
+    <title>DeepAIT Food Demo</title>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <!-- Script to instantly classify an image once it is uploaded. -->
+    <script type="text/javascript">
+      $(document).ready(
+        function(){
+          $('#classifyfile').attr('disabled',true);
+          $('#imagefile').change(
+            function(){
+              if ($(this).val()){
+                $('#formupload').submit();
+              }
+            }
+          );
+        }
+      );
+    </script>
+
+    <style>
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height:1.5em;
+      color: #232323;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+      font-family: Times, serif;
+      line-height:1.5em;
+      border-bottom: 1px solid #ccc;
+    }
+    </style>
+  </head>
+
+  <body>
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h1><a href="/">DeepAIT的食谱AI演示</a></h1>
+        <p>
+          <a href="http://deepait.com/">DeepAIT</a> 是计算机视觉专家.
+        </p>
+      </div>
+
+      <div>
+        <h2>食谱AI可以识别多种食物</h2>
+      </div>
+
+      {% if has_result %}
+      {% if not result[0] %}
+      <!-- we have error in the result. -->
+      <div class="alert alert-danger">{{ result[1] }} Did you provide a valid URL or a valid image file? </div>
+      {% else %}
+      <div class="media">
+        <a class="pull-left" href="#"><img class="media-object" width="192" height="192" src={{ imagesrc }}></a>
+        <div class="media-body">
+          <ul class="list-group">
+            {% for single_pred in result[1] %}
+            <li class="list-group-item">
+            <span class="badge">{{ single_pred[1] }}</span>
+            <h4 class="list-group-item-heading">
+              <a href="https://cn.bing.com/search?q={{ single_pred[0] }}" target="_blank">{{ single_pred[0] }}</a>
+            </h4>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <p> 耗费了 {{ result[2] }} 秒来识别图片中的食物. </p>
+      {% endif %}
+      <hr>
+      {% endif %}
+
+      <form role="form" action="classify_url" method="get">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" name="imageurl" id="imageurl" placeholder="请输入图片网址">
+            <span class="input-group-btn">
+              <input class="btn btn-primary" value="通过网址识别图片" type="submit" id="classifyurl"></input>
+            </span>
+          </div><!-- /input-group -->
+        </div>
+      </form>
+
+      <form id="formupload" class="form-inline" role="form" action="classify_upload" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="imagefile">或者上传一张图片:</label>
+          <input type="file" name="imagefile" id="imagefile">
+        </div>
+        <!--<input type="submit" class="btn btn-primary" value="Classify File" id="classifyfile"></input>-->
+      </form>
+    </div>
+
+    <hr>
+    <div id="footer">
+      <div class="container">
+        <p>&copy; DeepAIT</p>
+      </div>
+   </div>
+ </body>
+</html>
