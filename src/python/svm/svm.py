@@ -49,7 +49,7 @@ def loadMnistData():
             labels[i] = struct.unpack_from(fmt, data_label, offset)[0]
             offset += struct.calcsize(fmt)
         
-        mnist_data.append((images, labels))
+        mnist_data.append((images.astype(int), labels.astype(int)))
 
     return mnist_data
 
