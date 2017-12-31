@@ -30,6 +30,8 @@ def loadMnistData():
         images = np.empty((items, image_size))
         for i in range(items):
             images[i] = np.array(struct.unpack_from(fmt, data_img, offset))
+            #0~255 to 0~1
+            images[i] = images[i]/256
             offset += struct.calcsize(fmt)
 
         #fmt of struct unpack, > means big endian, i means integer, well, ii mean 2 integers
@@ -49,7 +51,7 @@ def loadMnistData():
             labels[i] = struct.unpack_from(fmt, data_label, offset)[0]
             offset += struct.calcsize(fmt)
         
-        mnist_data.append((images.astype(int), labels.astype(int)))
+        mnist_data.append((images, labels.astype(int)))
 
     return mnist_data
 
