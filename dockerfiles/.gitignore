@@ -1,0 +1,8 @@
+*.pyc
+*.caffemodel
+*.o
+lib*.so*
+bin/*
+*.jpg
+*.jpeg
+*.png
