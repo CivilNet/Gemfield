@@ -17,7 +17,8 @@ RUN ln -s /usr/bin/python3 /usr/bin/python && \
     locale-gen zh_CN.utf8 && \
     locale-gen zh_CN
 
-RUN pip3 install wheel numpy scikit-image protobuf easydict opencv_python celery bitstring ftputil && rm -rf /root/.cache
+RUN pip3 install --no-cache-dir --upgrade pip setuptools wheel && \
+    pip3 install --no-cache-dir wheel numpy scikit-image protobuf easydict opencv_python celery bitstring ftputil
 
 #to make ftp support Chinese by default
 RUN sed -i "s/latin-1/utf-8/g" /usr/lib/python3.5/ftplib.py
