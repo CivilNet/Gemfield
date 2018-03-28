@@ -21,19 +21,22 @@ def extract_frames(video, frame_dir, num_frames_to_extract=16):
 
     # get frame counts
     num_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    max_num_frames = num_frames - 15
     fps = cap.get(cv2.CAP_PROP_FPS)
 
     # move to start_frame
     cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
 
-    print("[Info] Extracting frame from {}".format(video))
+    print("[Info] Extracting {} frames from {}".format(num_frames, video))
 
     # grab each frame and save
     start_frames = []
     for frame_count in range(num_frames):
         frame_count += 1
-        if frame_count % num_frames_to_extract == 1:
+        #for last clip
+        if frame_count % num_frames_to_extract == 1 and frame_count <= max_num_frames:
             start_frames.append(frame_count)
+
         ret, frame = cap.read()
         if not ret:
             print("[Error] Frame extraction was not successful")
