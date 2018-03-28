@@ -33,17 +33,21 @@ def extract_frames(video, frame_dir, num_frames_to_extract=16):
     start_frames = []
     for frame_count in range(num_frames):
         frame_count += 1
-        #for last clip
-        if frame_count % num_frames_to_extract == 1 and frame_count <= max_num_frames:
-            start_frames.append(frame_count)
 
         ret, frame = cap.read()
         if not ret:
-            print("[Error] Frame extraction was not successful")
+            print("[Error] Frame {} extraction was not successful".format(frame_count))
+            if len(start_frames) == 0:
+                break
+            #remove this clip
+            del start_frames[-1]
             break
 
         frame_file = os.path.join(frame_dir, '{0:06d}.jpg'.format(frame_count))
         cv2.imwrite(frame_file, frame)
+        #for last clip
+        if frame_count % num_frames_to_extract == 1 and frame_count <= max_num_frames:
+            start_frames.append(frame_count)
 
     return start_frames
 
