@@ -17,7 +17,7 @@ def extract_frames(video, frame_dir, num_frames_to_extract=16):
     cap = cv2.VideoCapture(video)
     if not cap.isOpened():
         print("[Error] video={} can not be opened.".format(video))
-        sys.exit(-6)
+        sys.exit(-1)
 
     # get frame counts
     num_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -26,13 +26,14 @@ def extract_frames(video, frame_dir, num_frames_to_extract=16):
     # move to start_frame
     cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
 
+    print("[Info] Extracting frame from {}".format(video))
+
     # grab each frame and save
     start_frames = []
     for frame_count in range(num_frames):
         frame_count += 1
         if frame_count % num_frames_to_extract == 1:
             start_frames.append(frame_count)
-        print("[Info] Extracting frame num={} from {}".format(frame_count, video))
         ret, frame = cap.read()
         if not ret:
             print("[Error] Frame extraction was not successful")
@@ -78,8 +79,6 @@ def main(video_dir, output_dir):
         dummy_label += 1
     f_input.close()
     f_output_prefix.close()
-    #gemfield
-    sys.exit(0)
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
