@@ -29,7 +29,8 @@ def extract_frames(video, frame_dir, num_frames_to_extract=16):
     # grab each frame and save
     start_frames = []
     for frame_count in range(num_frames):
-        if frame_count % 16 == 0:
+        frame_count += 1
+        if frame_count % num_frames_to_extract == 1:
             start_frames.append(frame_count)
         print("[Info] Extracting frame num={} from {}".format(frame_count, video))
         ret, frame = cap.read()
