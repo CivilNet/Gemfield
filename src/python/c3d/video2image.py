@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import numpy as np
 import sys
 import os
 import subprocess
@@ -10,14 +9,14 @@ import cv2
 def extract_frames(video, frame_dir, num_frames_to_extract=16):
     # check output directory
     if os.path.isdir(frame_dir):
-        print "[Warning] frame_dir={} does exist. Will overwrite".format(frame_dir)
+        print("[Warning] frame_dir={} does exist. Will overwrite".format(frame_dir))
     else:
         os.makedirs(frame_dir)
 
     # get number of frames
     cap = cv2.VideoCapture(video)
     if not cap.isOpened():
-        print "[Error] video={} can not be opened.".format(video)
+        print("[Error] video={} can not be opened.".format(video))
         sys.exit(-6)
 
     # get frame counts
@@ -32,10 +31,10 @@ def extract_frames(video, frame_dir, num_frames_to_extract=16):
     for frame_count in range(num_frames):
         if frame_count % 16 == 0:
             start_frames.append(frame_count)
-        print "[Info] Extracting frame num={} from {}".format(frame_count, video)
+        print("[Info] Extracting frame num={} from {}".format(frame_count, video))
         ret, frame = cap.read()
         if not ret:
-            print "[Error] Frame extraction was not successful"
+            print("[Error] Frame extraction was not successful")
             break
 
         frame_file = os.path.join(frame_dir, '{0:06d}.jpg'.format(frame_count))
@@ -82,6 +81,9 @@ def main(video_dir, output_dir):
     sys.exit(0)
 
 if __name__ == '__main__':
-    video_dir = '/bigdata/gemfield/data/UCF-101/'
-    output_dir = '/tmp/gemfield'
+    if len(sys.argv) != 3:
+        print('Usage: {} <input_video_dir> <output_dir>'.format(sys.argv[0]))
+        sys.exit(1)
+    video_dir = sys.argv[1]
+    output_dir = sys.argv[2]
     main(video_dir, output_dir)
