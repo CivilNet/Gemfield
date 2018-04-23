@@ -5,7 +5,8 @@ import csv
 import random
 
 mp4_suffix_list = ['.mp4','.MP4','.Mp4']
-csv_suffix_list = ['.csv','.CSV','.Csv']
+csv_suffix_list = ['.7th.csv']
+cat_list = ['background', 'Unlike', 'Shot', 'Preshot', 'Head', 'DFKick', 'Penalty', 'Corner', 'Replay']
 
 highlight_mask = {}
 
@@ -50,31 +51,53 @@ def genRandomClip(clip_list):
     for clip in clip_list:
         input_video, cat, start_time, duration = clip
         input_video_file = os.path.basename(input_video)
+        #get rid of these videos.
+        if 'corner_' in input_video_file:
+            continue
+        if 'Header' in input_video_file:
+            continue
+        if 'penalty' in input_video_file:
+            continue
+        if 'DFKick' in input_video_file:
+            continue
+
+        print('get random clip from {}'.format(input_video_file))
         input_video_file_base = input_video_file[:-4]
 
         seconds_start = calSeconds(start_time)
+        if seconds_start == 0:
+            continue
         random_start = None
         for i in range(100):
+            #print('gemfield: {}'.format(seconds_start))
             random_start_tmp = random.randrange(0, seconds_start)
             if random_start_tmp in highlight_mask[input_video]:
-                print('start frame collision, pick another one...')
+                #print('start frame collision, pick another one...')
                 continue
             random_start = random_start_tmp
             break
 
         if random_start is None:
-            raise Exception('Cannot find negative samples in this video {}'.format(input_video))
+            print('Cannot find negative samples in this video {}'.format(input_video))
+            continue
 
-        new_clip_list.append( (input_video, 'background', str(random_start), str(6) )  )
+        new_clip_list.append( (input_video, 'background', str(random_start), str(3) )  )
     return new_clip_list
         
-
-
 def extractVideoFromCsv(csv_file, video_file):
     clip_list = []
     print('parsing {}'.format(csv_file))
     with open(csv_file) as csvfile:
-        readCSV = csv.reader(csvfile, delimiter=',')
+        data = csvfile.read().decode("utf-8-sig").encode("utf-8")
+        readCSV = []
+        lines = data.split('\n')
+        for l in lines:
+            l = l.strip()
+            if l == '':
+                continue
+            readCSV.append(l.split(','))
+        #readCSV = csv.reader(csvfile, delimiter=',')
+
         for row in readCSV:
             if len(row) == 0:
                 continue
@@ -87,6 +110,26 @@ def extractVideoFromCsv(csv_file, video_file):
             if cat == '' and start_time == '' and end_time == '':
                 print('[Warning] found empty row: {}'.format(row))
                 continue
+            cat_items = cat.split(';')
+            for cat_item in cat_items:
+                if cat_item not in cat_list:
+                    raise Exception('illegal category in {}: {}'.format(video_file, cat_item))
+
+            if len(cat_items) > 1:
+                for cat_item in cat_items:
+                    #with priority
+                    if cat_item == 'Unlike':
+                        cat = 'Unlike'
+                        break
+
+                    if cat_item == 'Head':
+                        cat = 'Head'
+                        break
+
+                    if cat_item == 'DFKick':
+                        continue
+                    cat = cat_item
+                print('Finally pickup {} as our category...'.format(cat))
             #do a time check
             try:
                 seconds_start = calSeconds(start_time)
@@ -96,21 +139,21 @@ def extractVideoFromCsv(csv_file, video_file):
                 print('illegal time format: {} and {} in {}. More info:{}'.format(start_time, end_time, csv_file, str(e)))
                 sys.exit(1)
 
-            if duration > 10:
-                raise Exception('Video clip too long! {} : {} -> {}'.format(video_file, start_time, end_time))
-
-            if duration < 4:
-                raise Exception('Video clip too short! {} : {} -> {}'.format(video_file, start_time, end_time))
+            # if duration > 10:
+            #     raise Exception('Video clip too long! {} : {} -> {}'.format(video_file, start_time, end_time))
+            if cat == 'Replay':
+                if duration > 60:
+                    raise Exception('Video clip duration should be less than 60! {} : {} -> {}'.format(video_file, start_time, end_time))
+            elif duration != 3:
+                raise Exception('Video clip duration should be 3! {} : {} -> {}'.format(video_file, start_time, end_time))
             
             clip_list.append( (video_file, cat, start_time, str(duration)) )
 
             if not video_file in highlight_mask:
                 highlight_mask[video_file] = set()
 
-            for frame_number in range(seconds_start - 7, seconds_start + duration + 1):
+            for frame_number in range(seconds_start - 4, seconds_start + duration + 10):
                 highlight_mask[video_file].add(frame_number)
-            
-
     return clip_list
 
 
@@ -127,13 +170,13 @@ if __name__ == '__main__':
             print('found hidden file: {}'.format(csv_file))
             continue
 
-        suffix = csv_file[-4:]
-        if suffix not in mp4_suffix_list and suffix not in csv_suffix_list:
-            raise Exception('illegal file: {}'.format(csv_file))
+        mp4_suffix = csv_file[-4:]
 
+        suffix = csv_file[-8:]
         if suffix not in csv_suffix_list:
             continue
-        video_file_base = csv_file[:-4]
+
+        video_file_base = csv_file[:-8]
         csv_file = os.path.join(csv_dir, csv_file)
         video_file = None
         for suffix in ['.MP4','.mp4','.Mp4']:
@@ -148,14 +191,20 @@ if __name__ == '__main__':
 
         clip_list_tmp = extractVideoFromCsv(csv_file, video_file)
         clip_list.extend(clip_list_tmp)
+    #background_clip_list = genRandomClip(clip_list)
 
-    #doExtract(clip_list, True)
-    background_clip_list = genRandomClip(clip_list)
-    for i in background_clip_list:
-        print(i)
+    #if len(background_clip_list) > 420:
+    #    random.shuffle(background_clip_list)
+    #    background_clip_list = background_clip_list[:420]
 
-    
-    doExtract(background_clip_list, True)
+    with open('background.txt','w') as f_bg, open('positive_samples.txt', 'w') as f_pos:
+        #for i in background_clip_list:
+        #    f_bg.writelines('{},{},{},{}\n'.format(i[0], i[1], i[2], i[3] ))
+        for i in clip_list:
+            f_pos.writelines('{},{},{},{}\n'.format(i[0], i[1], i[2], i[3] ))
+            
+    doExtract(clip_list, True)
+    #doExtract(background_clip_list, True)
 
 
 

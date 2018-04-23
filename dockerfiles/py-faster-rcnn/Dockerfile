@@ -10,6 +10,7 @@ RUN mv /etc/apt/sources.list.d/cuda.list /etc/apt/sources.list.d/cuda.list.gemfi
         locales \
         libglib2.0-0 \
         libsm6 \
+        mysql-client \
         python3-yaml && \
     rm -rf /var/lib/apt/lists/*
 
@@ -18,7 +19,7 @@ RUN ln -s /usr/bin/python3 /usr/bin/python && \
     locale-gen zh_CN
 
 RUN pip3 install --no-cache-dir --upgrade pip setuptools wheel && \
-    pip3 install --no-cache-dir wheel numpy scikit-image protobuf easydict opencv_python celery bitstring ftputil
+    pip3 install --no-cache-dir wheel numpy scikit-image protobuf easydict opencv_python celery bitstring ftputil pymysql
 
 #to make ftp support Chinese by default
 RUN sed -i "s/latin-1/utf-8/g" /usr/lib/python3.5/ftplib.py
