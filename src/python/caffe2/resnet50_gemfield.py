@@ -66,7 +66,6 @@ class DecodeBuffer(object):
 
 # for train and test
 def AddImageInput(model, reader, batch_size, is_test):
-    print('device_type: ', model._device_type)
     data, label = brew.image_input(
         model,
         reader, ["data", "label"],
@@ -128,7 +127,6 @@ def saveNet(model) :
         model.params.append(name)
 
     for param in model.params:
-        print(param)
         blob = workspace.FetchBlob(param)
         shape = blob.shape
         op = core.CreateOperator("GivenTensorFill", [], [param],arg=[ utils.MakeArgument("shape", shape),utils.MakeArgument("values", blob)])
@@ -227,72 +225,8 @@ def CivilNet(name, train_test_deplopy=0):
     workspace.CreateNet(model.net)
     return model
 
-    
+#Training and save the model to init_net.pb and predict_net.pb
 def trainAndSave(args):
-    # train_arg_scope = {'order': 'NCHW','use_cudnn': True,'cudnn_exhaustive_search': True,'ws_nbytes_limit': (64 * 1024 * 1024)}
-    # train_model = model_helper.ModelHelper(name="resnet50", arg_scope=train_arg_scope)
-    # reader = train_model.CreateDB("reader",db=args.train_data,db_type='lmdb',num_shards=1,shard_id=0)
-
-    # train_model._device_type = caffe2_pb2.CUDA
-    # train_model._device_prefix = "gpu"
-    # train_model._shared_model = False
-    # train_model._devices = [0]
-
-    # device_opt = core.DeviceOption(train_model._device_type, 0)
-    # with core.DeviceScope(device_opt):
-    #     with core.NameScope("{}_{}".format(train_model._device_prefix,0)):
-    #         AddImageInput(train_model,reader, batch_size=32,is_test=False)
-    #         with brew.arg_scope([brew.conv, brew.fc], WeightInitializer=Initializer,
-    #                 BiasInitializer=Initializer,enable_tensor_core=False,float16_compute=False):
-    #             pred = resnet.create_resnet50(train_model,"data",num_input_channels=3,num_labels=args.num_labels,no_bias=True,no_loss=True)
-    #         softmax, loss = train_model.SoftmaxWithLoss([pred, 'label'],['softmax', 'loss'])
-    #         brew.accuracy(train_model, [softmax, "label"], "accuracy")
-    # losses_by_gpu = {}
-    # losses_by_gpu[0] = [loss]
-    # #add grad
-    # def create_grad(lossp):
-    #     return train_model.ConstantFill(lossp, str(lossp) + "_grad", value=1.0)
-
-    # loss_grad = {}
-    # # Explicitly need to create gradients on each GPU
-    # device = core.DeviceOption(train_model._device_type, 0)
-    # with core.DeviceScope(device):
-    #     for l in losses_by_gpu[0]:
-    #         lg = create_grad(l)
-    #         loss_grad[str(l)] = str(lg)
-
-    #     train_model.AddGradientOperators(loss_grad)
-    # #end add grad
-    #     optimizer.add_weight_decay(train_model, args.weight_decay)
-    #     stepsz = int(30 * args.epoch_size / 32)
-    #     opt = optimizer.build_multi_precision_sgd(train_model,args.base_learning_rate,
-    #         momentum=0.9,nesterov=1,policy="step",stepsize=stepsz,gamma=0.1)
-    #     train_model._optimizer = opt
-
-    # workspace.RunNetOnce(train_model.param_init_net)
-    # workspace.CreateNet(train_model.net)
-
-    # # start test
-    # test_arg_scope = {'order': 'NCHW','use_cudnn': True,'cudnn_exhaustive_search': True}
-    # test_model = model_helper.ModelHelper(name="resnet50_test", arg_scope=test_arg_scope)
-    # test_reader = test_model.CreateDB("test_reader",db=args.test_data,db_type='lmdb',num_shards=1,shard_id=0)
-
-    # test_model._device_type = caffe2_pb2.CUDA
-    # test_model._device_prefix = "gpu"
-    # test_model._shared_model = False
-    # test_model._devices = [0]
-
-    # device_opt_test = core.DeviceOption(test_model._device_type, 0)
-    # with core.DeviceScope(device_opt_test):
-    #     with core.NameScope("{}_{}".format(test_model._device_prefix,0)):
-    #         AddImageInput(test_model,test_reader, batch_size=32,is_test=True)
-    #         with brew.arg_scope([brew.conv, brew.fc], WeightInitializer=Initializer,
-    #                 BiasInitializer=Initializer,enable_tensor_core=False,float16_compute=False):
-    #             resnet.create_resnet50(test_model,"data",num_input_channels=3,num_labels=args.num_labels,no_bias=True,no_loss=False)
-    # workspace.RunNetOnce(test_model.param_init_net)
-    # workspace.CreateNet(test_model.net)
-    ####
-
     train_model = CivilNet('resnet50', 0)
     test_model = CivilNet('resnet50_test', 1)
     deploy_model = CivilNet('resnet50_deploy', 2)
@@ -309,7 +243,6 @@ def trainAndSave(args):
             prefix = "{}_{}".format(train_model._device_prefix,train_model._devices[0])
             loss = workspace.FetchBlob(prefix + '/loss')
             accuracy = workspace.FetchBlob(prefix + '/accuracy')
-            #print(workspace.FetchBlob(prefix + '/label'))
             train_fmt = "Training loss in gemfield.org: {}, accuracy: {}"
             print(train_fmt.format(loss, accuracy))
             #vis('data')
