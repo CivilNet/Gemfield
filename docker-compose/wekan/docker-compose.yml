@@ -1,0 +1,38 @@
+version: '2'
+services:
+  mongo:
+    restart: always
+    image: mongo
+    volumes:
+      - /bigdata/mongo/db:/data/db
+      - /bigdata/mongo/backups:/backups
+    command: --smallfiles
+  rocketchat:
+    restart: always
+    image: rocketchat/rocket.chat
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URL=mongodb://mongo/rocket
+      - ROOT_URL=http://gemfield.org:3000
+    volumes:
+      - /bigdata/mongo/rocket:/var/www/rocket.chat/uploads
+  wekan:
+    restart: always
+    image: mquandalle/wekan
+    ports:
+      - 7030:8080
+    depends_on:
+      - mongo
+    environment:
+      - VIRTUAL_HOST=gemfield.org:7030
+      - MONGO_URL=mongodb://mongo/plan
+      - ROOT_URL=http://gemfield.org:7030
+      - MAIL_URL=smtp://gemfield:xxxxxx@smtp.ym.163.com:25/
+      - MAIL_FROM='Gemfield <gemfield@gemfield.org>'
+      - WITH_API=true
+      - BROWSER_POLICY_ENABLED=true
+    volumes:
+      - /bigdata/mongo/wekan:/built_app/programs/web.browser/app
