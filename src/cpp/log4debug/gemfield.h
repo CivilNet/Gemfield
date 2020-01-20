@@ -1,5 +1,10 @@
-#ifndef GEMFIELD
-#define GEMFIELD 1
+/*
+ * Copyright (c) 2016-2019 gemfield <gemfield@civilnet.cn>
+ * This file is part of libgemfield.so (https://github.com/civilnet/gemfield).
+ */
+#ifndef _GEMFIELD_H_
+#define _GEMFIELD_H_
+
 #include <initializer_list>
 #include <iostream>
 #include <sstream>
@@ -7,54 +12,87 @@
 #include <thread>
 #include <map>
 
+namespace gemfield_org{
+    enum LOG_LEVEL{
+        STACK_INFO = 0,
+        DETAIL_INFO = 1,
+        INFO = 2,
+        WARNING = 5,
+        ERROR = 6
+    };
+}
+namespace gemfield_org{
+    const  LOG_LEVEL global_log_level = STACK_INFO;
+}
 #define GEMFIELDSTR_DETAIL(x) #x
 #define GEMFIELDSTR(x) GEMFIELDSTR_DETAIL(x)
+#define GEMFIELD_SI gemfield_org::Gemfield gemfieldsi({__FILE__, GEMFIELDSTR(__LINE__), __FUNCTION__}, gemfield_org::STACK_INFO)
+#define GEMFIELD_DI(x) gemfield_org::Gemfield gemfielddi({__FILE__, GEMFIELDSTR(__LINE__), __FUNCTION__,x}, gemfield_org::DETAIL_INFO)
+#define GEMFIELD_I(x) gemfield_org::Gemfield gemfieldi({__FILE__, GEMFIELDSTR(__LINE__), __FUNCTION__,x}, gemfield_org::INFO)
+#define GEMFIELD_W(x) gemfield_org::Gemfield gemfieldw({__FILE__, GEMFIELDSTR(__LINE__), __FUNCTION__,x}, gemfield_org::WARNING)
+#define GEMFIELD_E(x) gemfield_org::Gemfield gemfielde({__FILE__, GEMFIELDSTR(__LINE__), __FUNCTION__,x}, gemfield_org::ERROR)
+#define GEMFIELD_E2(x,y) gemfield_org::Gemfield gemfielde2({__FILE__, GEMFIELDSTR(__LINE__), __FUNCTION__,x,y}, gemfield_org::ERROR)
 
 thread_local int __attribute__((weak)) gemfield_counter = 0;
 //std::map<uint64_t, int> __attribute__((weak)) gemfield_counter_map;
-
-class Gemfield{
-public:
-    Gemfield(std::initializer_list<const char*> src){
-        std::stringstream ss;
-        ss << std::this_thread::get_id();
-        
-        s += "[";
-        s += ss.str();
-        s += "]";
-        for (auto s1: src){
-            s += ":";
-            s += s1;
-        }
-         
-        printMark('+', s);
-    }
-    ~Gemfield(){
-        printMark('-', s);
+namespace gemfield_org{
+    template<typename ... Args>
+    std::string format( const std::string& format, Args ... args ){
+        size_t size = snprintf( nullptr, 0, format.c_str(), args ... ) + 1; 
+        std::unique_ptr<char[]> buf( new char[ size ] ); 
+        snprintf( buf.get(), size, format.c_str(), args ... );
+        return std::string( buf.get(), buf.get() + size - 1 ); 
     }
 
-private:
-    static void printMark(char c, std::string& s){
-        static std::mutex gemfield_lock;
-        std::lock_guard<std::mutex> lock(gemfield_lock);
+    class Gemfield{
+        public:
+            Gemfield(std::initializer_list<const char*> src, LOG_LEVEL level):level_(level){
+                if(level_ < global_log_level){
+                    return;
+                }
+                std::stringstream ss;
+                ss << "["<<std::this_thread::get_id()<<"]";
+                for (auto s1: src){
+                    ss << ":"<<s1;
+                }
+                s_ += ss.str();
+                if(level_ != STACK_INFO){
+                    printMark('#', s_, level_);
+                }else{
+                    printMark('+', s_, level_);
+                }
+            }
+            ~Gemfield(){
+                if(level_ < global_log_level || level_ != STACK_INFO){
+                    return;
+                }
+                printMark('-', s_, level_);
+            }
 
-        //std::thread::id current_tid = std::this_thread::get_id();
-        std::stringstream ss;
-        ss << std::this_thread::get_id();
-        uint64_t current_tid = std::stoull(ss.str());
+        private:
+            static void printMark(char c, std::string& s, LOG_LEVEL level){
+                static std::mutex gemfield_lock;
+                std::lock_guard<std::mutex> lock(gemfield_lock);
 
-        if(c == '+'){
-            ++gemfield_counter;
-        }
-        for(int i=0; i< gemfield_counter; i++){
-            std::cout<<c;
-        }
-        std::cout<<s<<std::endl;
+                std::stringstream ss;
+                ss << std::this_thread::get_id();
+                uint64_t current_tid = std::stoull(ss.str());
 
-        if(c == '-'){
-            --gemfield_counter;
-        }
-    }
-    std::string s;
-};
+                if(c == '+'){
+                    ++gemfield_counter;
+                }
+                for(int i=0; i< gemfield_counter; i++){
+                    std::cout<<c;
+                }
+                static std::map<LOG_LEVEL, std::string> log_token = {{STACK_INFO,""},{DETAIL_INFO," | DETAIL_INFO | "},{INFO," | INFO | "},{WARNING," | WARNING | "},{ERROR," | ERROR | "}};
+                std::cout<<s<<log_token[level]<<std::endl;
+
+                if(c == '-'){
+                    --gemfield_counter;
+                }
+            }
+            std::string s_;
+            LOG_LEVEL level_{WARNING};
+    };
+}
 #endif
