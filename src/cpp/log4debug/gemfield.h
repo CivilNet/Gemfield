@@ -11,6 +11,7 @@
 #include <mutex>
 #include <thread>
 #include <map>
+#include <fstream>
 
 namespace gemfield_org{
     enum LOG_LEVEL{
@@ -23,6 +24,39 @@ namespace gemfield_org{
 }
 namespace gemfield_org{
     const  LOG_LEVEL global_log_level = STACK_INFO;
+    class LogFromFile{
+        public:
+            LogFromFile(){
+                std::cout<<"GEMFIELD INITIALIZATION ONLY ONCE!"<<std::endl;
+                try{
+                    std::ifstream infile("gemfield.loglevel");
+                    std::string line;
+                    while (std::getline(infile, line)) {
+
+                        std::istringstream iss(line);
+                        std::string k;
+                        int v;
+                        if (!(iss >> k >> v)) { 
+                            break; 
+                        } 
+                        if(k == "LOGLEVEL"){
+                            log_level_ = static_cast<LOG_LEVEL>(v);
+                            break;
+                        }
+                    }
+                } catch(...){
+                    std::cout<<"Warning: read log configuration failed."<<std::endl;
+                    log_level_ = STACK_INFO;
+                }
+            }
+            LOG_LEVEL log_level_;
+    };
+
+    inline LOG_LEVEL getLogLevel(){
+        static LogFromFile log_from_file;
+        return log_from_file.log_level_;
+    }
+
 }
 #define GEMFIELDSTR_DETAIL(x) #x
 #define GEMFIELDSTR(x) GEMFIELDSTR_DETAIL(x)
@@ -47,7 +81,7 @@ namespace gemfield_org{
     class Gemfield{
         public:
             Gemfield(std::initializer_list<const char*> src, LOG_LEVEL level):level_(level){
-                if(level_ < global_log_level){
+                if(level_ < getLogLevel()){
                     return;
                 }
                 std::stringstream ss;
@@ -63,7 +97,7 @@ namespace gemfield_org{
                 }
             }
             ~Gemfield(){
-                if(level_ < global_log_level || level_ != STACK_INFO){
+                if(level_ < getLogLevel() || level_ != STACK_INFO){
                     return;
                 }
                 printMark('-', s_, level_);
