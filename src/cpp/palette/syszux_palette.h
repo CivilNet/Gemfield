@@ -11,6 +11,7 @@
 #include <memory>
 #include <vector>
 #include <algorithm>
+#include <assert.h>
 #if defined(SYSZUX_PALETTE_WITH_OPENCV)
 #include <opencv2/core.hpp>
 #include<opencv2/imgcodecs.hpp>
@@ -563,7 +564,7 @@ namespace syszuxpalette
         return data_floor[static_cast<size_t>(std::round(x * 255.0))];
     }
 
-    unique_ptr<unsigned char[]> createRGBArrayFromMatrix(vector<vector<float>>& matrix, ImageMode mode = ImageMode::RGB)
+    unique_ptr<unsigned char[]> createRGBArrayFromMatrix(vector<vector<float>> matrix, ImageMode mode = ImageMode::RGB,bool is_mirror_y=true)
     {
         //w = 391 if 4s
         int w = matrix.size();
@@ -588,12 +589,13 @@ namespace syszuxpalette
         }
 
         double d = max - min;
+        std::cout<<"gemfield debug min max: "<<min<<" - "<<max<<" - "<<d<<std::endl;
         if(d == 0){
             return unique_ptr<unsigned char[]>{nullptr};
         }
 
         for(auto& v: matrix){
-            std::for_each(v.begin(), v.end(), [min,d](auto& x){ x = (x-min)/d;} );
+            std::for_each(v.begin(), v.end(), [min,d](float& x){ x = (x-min)/d;} );
         }
         //2nd, transpose to rgb array
         int w_idx = 0;
@@ -602,14 +604,19 @@ namespace syszuxpalette
             for(auto x: v){
                 PixelRGB rgb = getFloorViridisPixelRGB(x);
 
+                int real_h_idx = h_idx;
+                if(is_mirror_y){
+                    real_h_idx = h - h_idx - 1;
+                }
+
                 if(mode == ImageMode::RGB){
                     for(int c_idx =0; c_idx<3;c_idx++){
-                        rc[ (w * h_idx + w_idx) * 3 + c_idx]  = rgb[c_idx];
+                        rc[ (w * real_h_idx + w_idx) * 3 + c_idx]  = rgb[c_idx];
                     }
                 }else if(mode == ImageMode::BGR){
-                    rc[ (w * h_idx + w_idx) * 3 + 0]  = rgb.b();
-                    rc[ (w * h_idx + w_idx) * 3 + 1]  = rgb.g();
-                    rc[ (w * h_idx + w_idx) * 3 + 2]  = rgb.r();
+                    rc[ (w * real_h_idx + w_idx) * 3 + 0]  = rgb.b();
+                    rc[ (w * real_h_idx + w_idx) * 3 + 1]  = rgb.g();
+                    rc[ (w * real_h_idx + w_idx) * 3 + 2]  = rgb.r();
                 }else{
                     return unique_ptr<unsigned char[]>{nullptr};
                 }
@@ -620,12 +627,30 @@ namespace syszuxpalette
         return rc;
     }
 
-#if defined(SYSZUX_PALETTE_WITH_OPENCV)
+
 void syszuxImgWrite(const string& output_path, unique_ptr<unsigned char[]>& data, int h, int w){
+#if defined(SYSZUX_PALETTE_WITH_OPENCV)
     cv::Mat src = cv::Mat(h,w,CV_8UC3,data.get());
     cv::imwrite(output_path, src);
     std::cout<<"SYSZUX Palette image saved to: "<<output_path<<std::endl;
-}
+#else
+    std::cout<<"Error: You should add -DSYSZUX_PALETTE_WITH_OPENCV to your build command line!"<<std::endl;
 #endif
+}
+
+void syszuxMultiImgWrite(const string& output_path, vector<unique_ptr<unsigned char[]>>& data, int h, int w){
+#if defined(SYSZUX_PALETTE_WITH_OPENCV)
+    int suffix = 0;
+    for(auto& r : data){
+        cv::Mat src = cv::Mat(h,w,CV_8UC3,r.get());
+        std::string real_output_path = output_path+"_"+std::to_string(++suffix)+".jpg";
+        cv::imwrite(real_output_path, src);
+        std::cout<<"SYSZUX Palette image saved to: "<<real_output_path<<std::endl;
+    }
+#else
+    std::cout<<"Error: You should add -DSYSZUX_PALETTE_WITH_OPENCV to your build command line!"<<std::endl;
+#endif
+}
+
 }
 #endif
