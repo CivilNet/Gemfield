@@ -2,9 +2,9 @@ from onnx_coreml import convert
 class_labels = ["travel","sport","playground","station","office","pet"]
 
 scale = 1.0 / (0.226 * 255.0)
-red_scale = -0.485 / (0.229 * 255.0)
-green_scale = -0.456 / (0.224 * 255.0)
-blue_scale = -0.406 / (0.225 * 255.0)
+red_scale = -0.485 / 0.226
+green_scale = -0.456 / 0.226
+blue_scale = -0.406 / 0.226
 
 args = dict(is_bgr=False, image_scale = scale, red_bias = red_scale, green_bias = green_scale, blue_bias = blue_scale,image_format='NCHW')
 

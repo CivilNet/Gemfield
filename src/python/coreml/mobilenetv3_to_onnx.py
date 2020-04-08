@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-n_class = 6
+n_class = 10
 input_size = (224, 224)
 dropout = 0
 
