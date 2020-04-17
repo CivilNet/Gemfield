@@ -18,7 +18,8 @@
 #endif
 
 using namespace std;
-
+double global_min = 0;
+double global_max = 0;
 namespace syszuxpalette
 {
     enum class ImageMode
@@ -564,7 +565,7 @@ namespace syszuxpalette
         return data_floor[static_cast<size_t>(std::round(x * 255.0))];
     }
 
-    unique_ptr<unsigned char[]> createRGBArrayFromMatrix(vector<vector<float>> matrix, ImageMode mode = ImageMode::RGB,bool is_mirror_y=true)
+    unique_ptr<unsigned char[]> createRGBArrayFromMatrix(vector<vector<float>> matrix, ImageMode mode = ImageMode::RGB,bool is_mirror_y=true, bool is_round=false)
     {
         //w = 391 if 4s
         int w = matrix.size();
@@ -589,7 +590,13 @@ namespace syszuxpalette
         }
 
         double d = max - min;
-        std::cout<<"gemfield debug min max: "<<min<<" - "<<max<<" - "<<d<<std::endl;
+	if(min<global_min){
+	  global_min = min;
+	}
+	if(max>global_max){
+	  global_max = max;
+	}
+        std::cout<<"gemfield debug min max: "<<min<<" | "<<max<<" | "<<d<<" | "<<global_min<<" | "<<global_max<<std::endl;
         if(d == 0){
             return unique_ptr<unsigned char[]>{nullptr};
         }
@@ -602,8 +609,12 @@ namespace syszuxpalette
         for(auto& v: matrix){
             int h_idx = 0;
             for(auto x: v){
-                PixelRGB rgb = getFloorViridisPixelRGB(x);
-
+		PixelRGB rgb = {0,0,0};
+		if(is_round){
+		  rgb = getRoundViridisPixelRGB(x);
+		}else{
+                  rgb = getFloorViridisPixelRGB(x);
+                }
                 int real_h_idx = h_idx;
                 if(is_mirror_y){
                     real_h_idx = h - h_idx - 1;
