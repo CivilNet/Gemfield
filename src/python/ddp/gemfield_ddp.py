@@ -81,11 +81,6 @@ def main():
     args.distributed = args.world_size > 1 or args.multiprocessing_distributed
     ngpus_per_node = torch.cuda.device_count()
 
-    # Use torch.multiprocessing.spawn to launch distributed processes: the
-    # main_worker process function
-    #mp.spawn(main_worker, nprocs=ngpus_per_node, args=(ngpus_per_node, args))
-
-# def main_worker(gpu, ngpus_per_node, args):
     global best_acc1
     if args.gpu is None:
         print("must specify GPU number")
@@ -166,7 +161,7 @@ def main():
         is_best = acc1 > best_acc1
         best_acc1 = max(acc1, best_acc1)
 
-        if args.rank % ngpus_per_node == 0:
+        if args.rank == 0:
             save_checkpoint({
                 'epoch': epoch + 1,
                 'arch': args.arch,
