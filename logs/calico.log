@@ -1,0 +1,823 @@
+2020-07-10 03:23:52.445 [INFO][9] startup.go 259: Early log level set to info
+2020-07-10 03:23:52.445 [INFO][9] startup.go 275: Using NODENAME environment for node name
+2020-07-10 03:23:52.445 [INFO][9] startup.go 287: Determined node name: edge01
+2020-07-10 03:23:52.447 [INFO][9] k8s.go 228: Using Calico IPAM
+2020-07-10 03:23:52.448 [INFO][9] startup.go 319: Checking datastore connection
+2020-07-10 03:23:52.457 [INFO][9] startup.go 343: Datastore connection verified
+2020-07-10 03:23:52.457 [INFO][9] startup.go 98: Datastore is ready
+2020-07-10 03:23:52.464 [INFO][9] startup.go 385: Initialize BGP data
+2020-07-10 03:23:52.465 [INFO][9] startup.go 621: Using autodetected IPv4 address on interface enp2s0: 192.168.0.134/24
+2020-07-10 03:23:52.465 [INFO][9] startup.go 455: Node IPv4 changed, will check for conflicts
+2020-07-10 03:23:52.473 [INFO][9] startup.go 684: No AS number configured on node resource, using global value
+2020-07-10 03:23:52.473 [INFO][9] startup.go 152: Setting NetworkUnavailable to False
+2020-07-10 03:23:52.503 [INFO][9] startup.go 567: FELIX_IPV6SUPPORT is false through environment variable
+2020-07-10 03:23:52.512 [INFO][9] startup.go 184: Using node name: edge01
+2020-07-10 03:23:52.530 [INFO][26] k8s.go 228: Using Calico IPAM
+2020-07-10 03:23:52.558 [INFO][26] allocateip.go 115: Assign a new tunnel address Node="edge01" type="ipipTunnelAddress"
+2020-07-10 03:23:52.558 [INFO][26] allocateip.go 165: Assign new tunnel address IP="" type="ipipTunnelAddress"
+2020-07-10 03:23:52.558 [INFO][26] ipam.go 87: Auto-assign 1 ipv4, 0 ipv6 addrs for host 'edge01'
+2020-07-10 03:23:52.563 [INFO][26] ipam.go 313: Looking up existing affinities for host handle="ipip-tunnel-addr-edge01" host="edge01"
+2020-07-10 03:23:52.567 [INFO][26] ipam.go 381: Trying affinity for 172.16.204.0/26 handle="ipip-tunnel-addr-edge01" host="edge01"
+2020-07-10 03:23:52.570 [INFO][26] ipam.go 135: Attempting to load block cidr=172.16.204.0/26 host="edge01"
+2020-07-10 03:23:52.572 [INFO][26] ipam.go 212: Affinity is confirmed and block has been loaded cidr=172.16.204.0/26 host="edge01"
+2020-07-10 03:23:52.572 [INFO][26] ipam.go 804: Attempting to assign 1 addresses from block block=172.16.204.0/26 handle="ipip-tunnel-addr-edge01" host="edge01"
+2020-07-10 03:23:52.574 [INFO][26] ipam.go 1265: Creating new handle: ipip-tunnel-addr-edge01
+2020-07-10 03:23:52.576 [INFO][26] ipam.go 827: Writing block in order to claim IPs block=172.16.204.0/26 handle="ipip-tunnel-addr-edge01" host="edge01"
+2020-07-10 03:23:52.588 [INFO][26] ipam.go 840: Successfully claimed IPs: [172.16.204.2/26] block=172.16.204.0/26 handle="ipip-tunnel-addr-edge01" host="edge01"
+2020-07-10 03:23:52.588 [INFO][26] ipam.go 413: Block '172.16.204.0/26' provided addresses: [172.16.204.2/26] handle="ipip-tunnel-addr-edge01" host="edge01"
+2020-07-10 03:23:52.590 [INFO][26] ipam.go 569: Auto-assigned 1 out of 1 IPv4s: [172.16.204.2/26] handle="ipip-tunnel-addr-edge01" host="edge01"
+2020-07-10 03:23:52.599 [INFO][26] allocateip.go 245: Set tunnel address IP="172.16.204.2/26" type="ipipTunnelAddress"
+Calico node started successfully
+bird: Unable to open configuration file /etc/calico/confd/config/bird6.cfg: No such file or directory
+bird: Unable to open configuration file /etc/calico/confd/config/bird.cfg: No such file or directory
+2020-07-10 03:23:53.670 [INFO][60] config.go 103: Skipping confd config file.
+2020-07-10 03:23:53.670 [INFO][60] run.go 17: Starting calico-confd
+2020-07-10 03:23:53.671 [INFO][58] logutils.go 82: Early screen log level set to info
+2020-07-10 03:23:53.671 [INFO][58] daemon.go 136: Felix starting up GOMAXPROCS=8 builddate="d6490e70eec26dd46d56473a4340a9280963eb18" gitcommit="2020-01-16T19:45:25+0000" version="v3.11.2"
+2020-07-10 03:23:53.671 [INFO][58] daemon.go 154: Loading configuration...
+2020-07-10 03:23:53.671 [INFO][58] env_var_loader.go 40: Found felix environment variable: "etcdscheme"=""
+2020-07-10 03:23:53.671 [INFO][58] env_var_loader.go 40: Found felix environment variable: "etcdkeyfile"=""
+2020-07-10 03:23:53.671 [INFO][58] env_var_loader.go 40: Found felix environment variable: "healthenabled"="true"
+2020-07-10 03:23:53.671 [INFO][58] env_var_loader.go 40: Found felix environment variable: "etcdcafile"=""
+2020-07-10 03:23:53.671 [INFO][58] env_var_loader.go 40: Found felix environment variable: "etcdendpoints"=""
+2020-07-10 03:23:53.671 [INFO][58] env_var_loader.go 40: Found felix environment variable: "felixhostname"="edge01"
+2020-07-10 03:23:53.671 [INFO][58] env_var_loader.go 40: Found felix environment variable: "datastoretype"="kubernetes"
+2020-07-10 03:23:53.671 [INFO][58] env_var_loader.go 40: Found felix environment variable: "etcdcertfile"=""
+2020-07-10 03:23:53.672 [INFO][58] env_var_loader.go 40: Found felix environment variable: "etcdaddr"=""
+2020-07-10 03:23:53.672 [INFO][58] env_var_loader.go 40: Found felix environment variable: "defaultendpointtohostaction"="ACCEPT"
+2020-07-10 03:23:53.672 [INFO][58] env_var_loader.go 40: Found felix environment variable: "ipinipmtu"="1440"
+2020-07-10 03:23:53.672 [INFO][58] env_var_loader.go 40: Found felix environment variable: "logseverityscreen"="info"
+2020-07-10 03:23:53.672 [INFO][60] k8s.go 228: Using Calico IPAM
+2020-07-10 03:23:53.672 [INFO][58] env_var_loader.go 40: Found felix environment variable: "ipv6support"="false"
+2020-07-10 03:23:53.672 [INFO][58] daemon.go 177: Loading config file: /etc/calico/felix.cfg
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 253: Merging in config from environment variable: map[datastoretype:kubernetes defaultendpointtohostaction:ACCEPT etcdaddr: etcdcafile: etcdcertfile: etcdendpoints: etcdkeyfile: etcdscheme: felixhostname:edge01 healthenabled:true ipinipmtu:1440 ipv6support:false logseverityscreen:info]
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 262: Ignoring empty configuration parameter. Use value 'none' if your intention is to explicitly disable the default value. name="etcdaddr" source=environment variable
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 262: Ignoring empty configuration parameter. Use value 'none' if your intention is to explicitly disable the default value. name="etcdcafile" source=environment variable
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 262: Ignoring empty configuration parameter. Use value 'none' if your intention is to explicitly disable the default value. name="etcdendpoints" source=environment variable
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 262: Ignoring empty configuration parameter. Use value 'none' if your intention is to explicitly disable the default value. name="etcdcertfile" source=environment variable
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 262: Ignoring empty configuration parameter. Use value 'none' if your intention is to explicitly disable the default value. name="etcdscheme" source=environment variable
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 262: Ignoring empty configuration parameter. Use value 'none' if your intention is to explicitly disable the default value. name="etcdkeyfile" source=environment variable
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 334: Parsing value for IpInIpMtu: 1440 (from environment variable)
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 370: Parsed value for IpInIpMtu: 1440 (from environment variable)
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 334: Parsing value for LogSeverityScreen: info (from environment variable)
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 370: Parsed value for LogSeverityScreen: INFO (from environment variable)
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 334: Parsing value for HealthEnabled: true (from environment variable)
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 370: Parsed value for HealthEnabled: true (from environment variable)
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 334: Parsing value for Ipv6Support: false (from environment variable)
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 370: Parsed value for Ipv6Support: false (from environment variable)
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 334: Parsing value for DatastoreType: kubernetes (from environment variable)
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 370: Parsed value for DatastoreType: kubernetes (from environment variable)
+2020-07-10 03:23:53.672 [INFO][58] config_params.go 334: Parsing value for FelixHostname: edge01 (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 370: Parsed value for FelixHostname: edge01 (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 334: Parsing value for DefaultEndpointToHostAction: ACCEPT (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 370: Parsed value for DefaultEndpointToHostAction: ACCEPT (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 253: Merging in config from config file: map[LogFilePath:None LogSeverityFile:None LogSeveritySys:None MetadataAddr:None]
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 334: Parsing value for DatastoreType: kubernetes (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 370: Parsed value for DatastoreType: kubernetes (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 334: Parsing value for FelixHostname: edge01 (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 370: Parsed value for FelixHostname: edge01 (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 334: Parsing value for DefaultEndpointToHostAction: ACCEPT (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 370: Parsed value for DefaultEndpointToHostAction: ACCEPT (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 334: Parsing value for IpInIpMtu: 1440 (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 370: Parsed value for IpInIpMtu: 1440 (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 334: Parsing value for LogSeverityScreen: info (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 370: Parsed value for LogSeverityScreen: INFO (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 334: Parsing value for HealthEnabled: true (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 370: Parsed value for HealthEnabled: true (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 334: Parsing value for Ipv6Support: false (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 370: Parsed value for Ipv6Support: false (from environment variable)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 334: Parsing value for LogSeveritySys: None (from config file)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 370: Parsed value for LogSeveritySys:  (from config file)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 334: Parsing value for MetadataAddr: None (from config file)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 370: Parsed value for MetadataAddr:  (from config file)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 334: Parsing value for LogFilePath: None (from config file)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 370: Parsed value for LogFilePath:  (from config file)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 334: Parsing value for LogSeverityFile: None (from config file)
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.673 [INFO][58] config_params.go 370: Parsed value for LogSeverityFile:  (from config file)
+2020-07-10 03:23:53.673 [INFO][58] health.go 233: Health enabled.  Starting server. host="localhost" port=9099
+2020-07-10 03:23:53.674 [INFO][58] config_params.go 455: Encap disabled, disabling node poll (if KDD is in use).
+2020-07-10 03:23:53.674 [INFO][58] daemon.go 209: Connecting to datastore datastore="kubernetes"
+2020-07-10 03:23:53.677 [INFO][58] k8s.go 228: Using Calico IPAM
+2020-07-10 03:23:53.677 [INFO][58] daemon.go 216: Created datastore client
+2020-07-10 03:23:53.684 [INFO][60] watchersyncer.go 89: Start called
+2020-07-10 03:23:53.684 [INFO][60] client.go 362: RouteGenerator has indicated it is in sync
+2020-07-10 03:23:53.684 [INFO][60] watchersyncer.go 127: Sending status update Status=wait-for-ready
+2020-07-10 03:23:53.684 [INFO][60] watchersyncer.go 147: Starting main event processing loop
+2020-07-10 03:23:53.688 [INFO][60] watchercache.go 289: Sending synced update ListRoot="/calico/resources/v3/projectcalico.org/bgpconfigurations"
+2020-07-10 03:23:53.689 [INFO][60] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.689 [INFO][60] watchersyncer.go 127: Sending status update Status=resync
+2020-07-10 03:23:53.689 [INFO][60] watchercache.go 289: Sending synced update ListRoot="/calico/resources/v3/projectcalico.org/bgppeers"
+2020-07-10 03:23:53.689 [INFO][60] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.689 [INFO][60] watchercache.go 289: Sending synced update ListRoot="/calico/resources/v3/projectcalico.org/ippools"
+2020-07-10 03:23:53.689 [INFO][60] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.691 [INFO][58] daemon.go 802: Loaded ready flag kind="ClusterInformation" name="default" ready=true
+2020-07-10 03:23:53.693 [INFO][60] watchercache.go 289: Sending synced update ListRoot="/calico/ipam/v2/host/edge01"
+2020-07-10 03:23:53.693 [INFO][60] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.695 [INFO][60] watchercache.go 289: Sending synced update ListRoot="/calico/resources/v3/projectcalico.org/nodes"
+2020-07-10 03:23:53.695 [INFO][60] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.695 [INFO][60] watchersyncer.go 221: All watchers have sync'd data - sending data and final sync
+2020-07-10 03:23:53.696 [INFO][60] watchersyncer.go 127: Sending status update Status=in-sync
+2020-07-10 03:23:53.696 [INFO][60] client.go 352: Calico Syncer has indicated it is in sync
+2020-07-10 03:23:53.696 [INFO][60] resource.go 220: Target config /etc/calico/confd/config/bird6_aggr.cfg out of sync
+2020-07-10 03:23:53.696 [INFO][60] resource.go 220: Target config /etc/calico/confd/config/bird_ipam.cfg out of sync
+2020-07-10 03:23:53.696 [INFO][60] resource.go 220: Target config /etc/calico/confd/config/bird6_ipam.cfg out of sync
+2020-07-10 03:23:53.697 [INFO][60] resource.go 220: Target config /etc/calico/confd/config/bird6.cfg out of sync
+2020-07-10 03:23:53.697 [INFO][60] resource.go 220: Target config /etc/calico/confd/config/bird_aggr.cfg out of sync
+2020-07-10 03:23:53.697 [INFO][60] resource.go 220: Target config /tmp/tunl-ip out of sync
+2020-07-10 03:23:53.698 [INFO][60] resource.go 220: Target config /etc/calico/confd/config/bird.cfg out of sync
+2020-07-10 03:23:53.699 [INFO][58] daemon.go 782: No config of this type kind="FelixConfiguration" name="node.edge01"
+2020-07-10 03:23:53.703 [INFO][58] config_params.go 253: Merging in config from datastore (global): map[CalicoVersion:v3.11.2 ClusterGUID:2b0d82dade4c4cd9bcb7040cb7946372 ClusterType:k8s,bgp,kdd IpInIpEnabled:true LogSeverityScreen:Info ReportingIntervalSecs:0]
+2020-07-10 03:23:53.703 [INFO][58] config_params.go 334: Parsing value for Ipv6Support: false (from environment variable)
+2020-07-10 03:23:53.703 [INFO][58] config_params.go 370: Parsed value for Ipv6Support: false (from environment variable)
+2020-07-10 03:23:53.703 [INFO][58] config_params.go 334: Parsing value for DatastoreType: kubernetes (from environment variable)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 370: Parsed value for DatastoreType: kubernetes (from environment variable)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 334: Parsing value for FelixHostname: edge01 (from environment variable)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 370: Parsed value for FelixHostname: edge01 (from environment variable)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 334: Parsing value for DefaultEndpointToHostAction: ACCEPT (from environment variable)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 370: Parsed value for DefaultEndpointToHostAction: ACCEPT (from environment variable)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 334: Parsing value for IpInIpMtu: 1440 (from environment variable)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 370: Parsed value for IpInIpMtu: 1440 (from environment variable)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 334: Parsing value for LogSeverityScreen: info (from environment variable)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 370: Parsed value for LogSeverityScreen: INFO (from environment variable)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 334: Parsing value for HealthEnabled: true (from environment variable)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 370: Parsed value for HealthEnabled: true (from environment variable)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 334: Parsing value for MetadataAddr: None (from config file)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 370: Parsed value for MetadataAddr:  (from config file)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 334: Parsing value for LogFilePath: None (from config file)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 370: Parsed value for LogFilePath:  (from config file)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 334: Parsing value for LogSeverityFile: None (from config file)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 370: Parsed value for LogSeverityFile:  (from config file)
+2020-07-10 03:23:53.704 [INFO][60] resource.go 260: Target config /etc/calico/confd/config/bird6_aggr.cfg has been updated
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 334: Parsing value for LogSeveritySys: None (from config file)
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.704 [INFO][58] config_params.go 370: Parsed value for LogSeveritySys:  (from config file)
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 334: Parsing value for ClusterGUID: 2b0d82dade4c4cd9bcb7040cb7946372 (from datastore (global))
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 370: Parsed value for ClusterGUID: 2b0d82dade4c4cd9bcb7040cb7946372 (from datastore (global))
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 334: Parsing value for ClusterType: k8s,bgp,kdd (from datastore (global))
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 370: Parsed value for ClusterType: k8s,bgp,kdd (from datastore (global))
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 334: Parsing value for CalicoVersion: v3.11.2 (from datastore (global))
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 370: Parsed value for CalicoVersion: v3.11.2 (from datastore (global))
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 334: Parsing value for LogSeverityScreen: Info (from datastore (global))
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 370: Parsed value for LogSeverityScreen: INFO (from datastore (global))
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 373: Skipping config value for LogSeverityScreen from datastore (global); already have a value from environment variable
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 334: Parsing value for IpInIpEnabled: true (from datastore (global))
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 370: Parsed value for IpInIpEnabled: true (from datastore (global))
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 334: Parsing value for ReportingIntervalSecs: 0 (from datastore (global))
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 370: Parsed value for ReportingIntervalSecs: 0s (from datastore (global))
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 253: Merging in config from datastore (per-host): map[IpInIpTunnelAddr:172.16.204.2]
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 334: Parsing value for Ipv6Support: false (from environment variable)
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 370: Parsed value for Ipv6Support: false (from environment variable)
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 334: Parsing value for DatastoreType: kubernetes (from environment variable)
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 370: Parsed value for DatastoreType: kubernetes (from environment variable)
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 334: Parsing value for FelixHostname: edge01 (from environment variable)
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 370: Parsed value for FelixHostname: edge01 (from environment variable)
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 334: Parsing value for DefaultEndpointToHostAction: ACCEPT (from environment variable)
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 370: Parsed value for DefaultEndpointToHostAction: ACCEPT (from environment variable)
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 334: Parsing value for IpInIpMtu: 1440 (from environment variable)
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 370: Parsed value for IpInIpMtu: 1440 (from environment variable)
+2020-07-10 03:23:53.705 [INFO][58] config_params.go 334: Parsing value for LogSeverityScreen: info (from environment variable)
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 370: Parsed value for LogSeverityScreen: INFO (from environment variable)
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 334: Parsing value for HealthEnabled: true (from environment variable)
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 370: Parsed value for HealthEnabled: true (from environment variable)
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 334: Parsing value for MetadataAddr: None (from config file)
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 370: Parsed value for MetadataAddr:  (from config file)
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 334: Parsing value for LogFilePath: None (from config file)
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 370: Parsed value for LogFilePath:  (from config file)
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 334: Parsing value for LogSeverityFile: None (from config file)
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 370: Parsed value for LogSeverityFile:  (from config file)
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 334: Parsing value for LogSeveritySys: None (from config file)
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 370: Parsed value for LogSeveritySys:  (from config file)
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 334: Parsing value for IpInIpTunnelAddr: 172.16.204.2 (from datastore (per-host))
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 370: Parsed value for IpInIpTunnelAddr: 172.16.204.2 (from datastore (per-host))
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 334: Parsing value for LogSeverityScreen: Info (from datastore (global))
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 370: Parsed value for LogSeverityScreen: INFO (from datastore (global))
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 373: Skipping config value for LogSeverityScreen from datastore (global); already have a value from environment variable
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 334: Parsing value for IpInIpEnabled: true (from datastore (global))
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 370: Parsed value for IpInIpEnabled: true (from datastore (global))
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 334: Parsing value for ReportingIntervalSecs: 0 (from datastore (global))
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 370: Parsed value for ReportingIntervalSecs: 0s (from datastore (global))
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 334: Parsing value for ClusterGUID: 2b0d82dade4c4cd9bcb7040cb7946372 (from datastore (global))
+2020-07-10 03:23:53.706 [INFO][58] config_params.go 370: Parsed value for ClusterGUID: 2b0d82dade4c4cd9bcb7040cb7946372 (from datastore (global))
+2020-07-10 03:23:53.707 [INFO][58] config_params.go 334: Parsing value for ClusterType: k8s,bgp,kdd (from datastore (global))
+2020-07-10 03:23:53.707 [INFO][58] config_params.go 370: Parsed value for ClusterType: k8s,bgp,kdd (from datastore (global))
+2020-07-10 03:23:53.707 [INFO][58] config_params.go 334: Parsing value for CalicoVersion: v3.11.2 (from datastore (global))
+2020-07-10 03:23:53.707 [INFO][58] config_params.go 370: Parsed value for CalicoVersion: v3.11.2 (from datastore (global))
+2020-07-10 03:23:53.708 [INFO][58] k8s.go 228: Using Calico IPAM
+2020-07-10 03:23:53.708 [INFO][58] health.go 133: Health of component changed lastReport=health.HealthReport{Live:true, Ready:false} name="felix-startup" newReport=&health.HealthReport{Live:true, Ready:true}
+2020-07-10 03:23:53.708 [INFO][58] health.go 230: Health enabled.  Server is already running. host="localhost" port=9099
+2020-07-10 03:23:53.708 [INFO][58] daemon.go 293: Successfully loaded configuration. GOMAXPROCS=8 builddate="d6490e70eec26dd46d56473a4340a9280963eb18" config=&config.Config{UseInternalDataplaneDriver:true, DataplaneDriver:"calico-iptables-plugin", DatastoreType:"kubernetes", FelixHostname:"edge01", EtcdAddr:"127.0.0.1:2379", EtcdScheme:"http", EtcdKeyFile:"", EtcdCertFile:"", EtcdCaFile:"", EtcdEndpoints:[]string(nil), TyphaAddr:"", TyphaK8sServiceName:"", TyphaK8sNamespace:"kube-system", TyphaReadTimeout:30000000000, TyphaWriteTimeout:10000000000, TyphaKeyFile:"", TyphaCertFile:"", TyphaCAFile:"", TyphaCN:"", TyphaURISAN:"", Ipv6Support:false, IgnoreLooseRPF:false, IptablesBackend:"legacy", RouteRefreshInterval:90000000000, DeviceRouteSourceAddress:net.IP(nil), DeviceRouteProtocol:3, RemoveExternalRoutes:true, IptablesRefreshInterval:90000000000, IptablesPostWriteCheckIntervalSecs:1000000000, IptablesLockFilePath:"/run/xtables.lock", IptablesLockTimeoutSecs:0, IptablesLockProbeIntervalMillis:50000000, IpsetsRefreshInterval:10000000000, MaxIpsetSize:1048576, XDPRefreshInterval:90000000000, PolicySyncPathPrefix:"", NetlinkTimeoutSecs:10000000000, MetadataAddr:"", MetadataPort:8775, OpenstackRegion:"", InterfacePrefix:"cali", InterfaceExclude:[]*regexp.Regexp{(*regexp.Regexp)(0xc000537e60)}, ChainInsertMode:"insert", DefaultEndpointToHostAction:"ACCEPT", IptablesFilterAllowAction:"ACCEPT", IptablesMangleAllowAction:"ACCEPT", LogPrefix:"calico-packet", LogFilePath:"", LogSeverityFile:"", LogSeverityScreen:"INFO", LogSeveritySys:"", VXLANEnabled:false, VXLANPort:4789, VXLANVNI:4096, VXLANMTU:1410, IPv4VXLANTunnelAddr:net.IP(nil), VXLANTunnelMACAddr:"", IpInIpEnabled:true, IpInIpMtu:1440, IpInIpTunnelAddr:net.IP{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xff, 0xff, 0xac, 0x10, 0xcc, 0x2}, ReportingIntervalSecs:0, ReportingTTLSecs:90000000000, EndpointReportingEnabled:false, EndpointReportingDelaySecs:1000000000, IptablesMarkMask:0xffff0000, DisableConntrackInvalidCheck:false, HealthEnabled:true, HealthPort:9099, HealthHost:"localhost", PrometheusMetricsEnabled:false, PrometheusMetricsHost:"", PrometheusMetricsPort:9091, PrometheusGoMetricsEnabled:true, PrometheusProcessMetricsEnabled:true, FailsafeInboundHostPorts:[]config.ProtoPort{config.ProtoPort{Protocol:"tcp", Port:0x16}, config.ProtoPort{Protocol:"udp", Port:0x44}, config.ProtoPort{Protocol:"tcp", Port:0xb3}, config.ProtoPort{Protocol:"tcp", Port:0x94b}, config.ProtoPort{Protocol:"tcp", Port:0x94c}, config.ProtoPort{Protocol:"tcp", Port:0x1a0a}, config.ProtoPort{Protocol:"tcp", Port:0x1a0b}}, FailsafeOutboundHostPorts:[]config.ProtoPort{config.ProtoPort{Protocol:"udp", Port:0x35}, config.ProtoPort{Protocol:"udp", Port:0x43}, config.ProtoPort{Protocol:"tcp", Port:0xb3}, config.ProtoPort{Protocol:"tcp", Port:0x94b}, config.ProtoPort{Protocol:"tcp", Port:0x94c}, config.ProtoPort{Protocol:"tcp", Port:0x1a0a}, config.ProtoPort{Protocol:"tcp", Port:0x1a0b}}, KubeNodePortRanges:[]numorstring.Port{numorstring.Port{MinPort:0x7530, MaxPort:0x7fff, PortName:""}}, NATPortRange:numorstring.Port{MinPort:0x0, MaxPort:0x0, PortName:""}, NATOutgoingAddress:net.IP(nil), UsageReportingEnabled:true, UsageReportingInitialDelaySecs:300000000000, UsageReportingIntervalSecs:86400000000000, ClusterGUID:"2b0d82dade4c4cd9bcb7040cb7946372", ClusterType:"k8s,bgp,kdd", CalicoVersion:"v3.11.2", ExternalNodesCIDRList:[]string(nil), DebugMemoryProfilePath:"", DebugCPUProfilePath:"/tmp/felix-cpu-<timestamp>.pprof", DebugDisableLogDropping:false, DebugSimulateCalcGraphHangAfter:0, DebugSimulateDataplaneHangAfter:0, sourceToRawConfig:map[config.Source]map[string]string{0x1:map[string]string{"CalicoVersion":"v3.11.2", "ClusterGUID":"2b0d82dade4c4cd9bcb7040cb7946372", "ClusterType":"k8s,bgp,kdd", "IpInIpEnabled":"true", "LogSeverityScreen":"Info", "ReportingIntervalSecs":"0"}, 0x2:map[string]string{"IpInIpTunnelAddr":"172.16.204.2"}, 0x3:map[string]string{"LogFilePath":"None", "LogSeverityFile":"None", "LogSeveritySys":"None", "MetadataAddr":"None"}, 0x4:map[string]string{"datastoretype":"kubernetes", "defaultendpointtohostaction":"ACCEPT", "felixhostname":"edge01", "healthenabled":"true", "ipinipmtu":"1440", "ipv6support":"false", "logseverityscreen":"info"}}, rawValues:map[string]string{"CalicoVersion":"v3.11.2", "ClusterGUID":"2b0d82dade4c4cd9bcb7040cb7946372", "ClusterType":"k8s,bgp,kdd", "DatastoreType":"kubernetes", "DefaultEndpointToHostAction":"ACCEPT", "FelixHostname":"edge01", "HealthEnabled":"true", "IpInIpEnabled":"true", "IpInIpMtu":"1440", "IpInIpTunnelAddr":"172.16.204.2", "Ipv6Support":"false", "LogFilePath":"None", "LogSeverityFile":"None", "LogSeverityScreen":"info", "LogSeveritySys":"None", "MetadataAddr":"None", "ReportingIntervalSecs":"0"}, Err:error(nil), IptablesNATOutgoingInterfaceFilter:"", SidecarAccelerationEnabled:false, XDPEnabled:true, GenericXDPEnabled:false, loadClientConfigFromEnvironment:(func() (*apiconfig.CalicoAPIConfig, error))(0x11d8ec0), useNodeResourceUpdates:false} gitcommit="2020-01-16T19:45:25+0000" version="v3.11.2"
+2020-07-10 03:23:53.709 [INFO][58] driver.go 43: Using internal (linux) dataplane driver.
+2020-07-10 03:23:53.709 [INFO][58] driver.go 85: Calculated iptables mark bits acceptMark=0x10000 endpointMark=0xfff00000 endpointMarkNonCali=0x100000 passMark=0x20000 scratch0Mark=0x40000 scratch1Mark=0x80000
+2020-07-10 03:23:53.709 [INFO][58] int_dataplane.go 240: Creating internal dataplane driver. config=intdataplane.Config{Hostname:"edge01", IPv6Enabled:false, RuleRendererOverride:rules.RuleRenderer(nil), IPIPMTU:1440, VXLANMTU:1410, IgnoreLooseRPF:false, MaxIPSetSize:1048576, IptablesBackend:"legacy", IPSetsRefreshInterval:10000000000, RouteRefreshInterval:90000000000, DeviceRouteSourceAddress:net.IP(nil), DeviceRouteProtocol:3, RemoveExternalRoutes:true, IptablesRefreshInterval:90000000000, IptablesPostWriteCheckInterval:1000000000, IptablesInsertMode:"insert", IptablesLockFilePath:"/run/xtables.lock", IptablesLockTimeout:0, IptablesLockProbeInterval:50000000, XDPRefreshInterval:90000000000, NetlinkTimeout:10000000000, RulesConfig:rules.Config{IPSetConfigV4:(*ipsets.IPVersionConfig)(0xc00061a280), IPSetConfigV6:(*ipsets.IPVersionConfig)(0xc00061a410), WorkloadIfacePrefixes:[]string{"cali"}, IptablesMarkAccept:0x10000, IptablesMarkPass:0x20000, IptablesMarkScratch0:0x40000, IptablesMarkScratch1:0x80000, IptablesMarkEndpoint:0xfff00000, IptablesMarkNonCaliEndpoint:0x100000, KubeNodePortRanges:[]numorstring.Port{numorstring.Port{MinPort:0x7530, MaxPort:0x7fff, PortName:""}}, KubeIPVSSupportEnabled:false, OpenStackMetadataIP:net.IP(nil), OpenStackMetadataPort:0x2247, OpenStackSpecialCasesEnabled:false, VXLANEnabled:false, VXLANPort:4789, VXLANVNI:4096, IPIPEnabled:true, IPIPTunnelAddress:net.IP{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xff, 0xff, 0xac, 0x10, 0xcc, 0x2}, VXLANTunnelAddress:net.IP(nil), IptablesLogPrefix:"calico-packet", EndpointToHostAction:"ACCEPT", IptablesFilterAllowAction:"ACCEPT", IptablesMangleAllowAction:"ACCEPT", FailsafeInboundHostPorts:[]config.ProtoPort{config.ProtoPort{Protocol:"tcp", Port:0x16}, config.ProtoPort{Protocol:"udp", Port:0x44}, config.ProtoPort{Protocol:"tcp", Port:0xb3}, config.ProtoPort{Protocol:"tcp", Port:0x94b}, config.ProtoPort{Protocol:"tcp", Port:0x94c}, config.ProtoPort{Protocol:"tcp", Port:0x1a0a}, config.ProtoPort{Protocol:"tcp", Port:0x1a0b}}, FailsafeOutboundHostPorts:[]config.ProtoPort{config.ProtoPort{Protocol:"udp", Port:0x35}, config.ProtoPort{Protocol:"udp", Port:0x43}, config.ProtoPort{Protocol:"tcp", Port:0xb3}, config.ProtoPort{Protocol:"tcp", Port:0x94b}, config.ProtoPort{Protocol:"tcp", Port:0x94c}, config.ProtoPort{Protocol:"tcp", Port:0x1a0a}, config.ProtoPort{Protocol:"tcp", Port:0x1a0b}}, DisableConntrackInvalid:false, NATPortRange:numorstring.Port{MinPort:0x0, MaxPort:0x0, PortName:""}, IptablesNATOutgoingInterfaceFilter:"", NATOutgoingAddress:net.IP(nil)}, IfaceMonitorConfig:ifacemonitor.Config{InterfaceExcludes:[]*regexp.Regexp{(*regexp.Regexp)(0xc000537e60)}}, StatusReportingInterval:0, ConfigChangedRestartCallback:(func())(0x179c630), PostInSyncCallback:(func())(0x1781180), HealthAggregator:(*health.HealthAggregator)(0xc000237890), DebugSimulateDataplaneHangAfter:0, ExternalNodesCidrs:[]string(nil), XDPEnabled:true, XDPAllowGeneric:false, SidecarAccelerationEnabled:false, LookPathOverride:(func(string) (string, error))(nil)}
+2020-07-10 03:23:53.709 [INFO][58] rule_defs.go 294: Creating rule renderer. config=rules.Config{IPSetConfigV4:(*ipsets.IPVersionConfig)(0xc00061a280), IPSetConfigV6:(*ipsets.IPVersionConfig)(0xc00061a410), WorkloadIfacePrefixes:[]string{"cali"}, IptablesMarkAccept:0x10000, IptablesMarkPass:0x20000, IptablesMarkScratch0:0x40000, IptablesMarkScratch1:0x80000, IptablesMarkEndpoint:0xfff00000, IptablesMarkNonCaliEndpoint:0x100000, KubeNodePortRanges:[]numorstring.Port{numorstring.Port{MinPort:0x7530, MaxPort:0x7fff, PortName:""}}, KubeIPVSSupportEnabled:false, OpenStackMetadataIP:net.IP(nil), OpenStackMetadataPort:0x2247, OpenStackSpecialCasesEnabled:false, VXLANEnabled:false, VXLANPort:4789, VXLANVNI:4096, IPIPEnabled:true, IPIPTunnelAddress:net.IP{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xff, 0xff, 0xac, 0x10, 0xcc, 0x2}, VXLANTunnelAddress:net.IP(nil), IptablesLogPrefix:"calico-packet", EndpointToHostAction:"ACCEPT", IptablesFilterAllowAction:"ACCEPT", IptablesMangleAllowAction:"ACCEPT", FailsafeInboundHostPorts:[]config.ProtoPort{config.ProtoPort{Protocol:"tcp", Port:0x16}, config.ProtoPort{Protocol:"udp", Port:0x44}, config.ProtoPort{Protocol:"tcp", Port:0xb3}, config.ProtoPort{Protocol:"tcp", Port:0x94b}, config.ProtoPort{Protocol:"tcp", Port:0x94c}, config.ProtoPort{Protocol:"tcp", Port:0x1a0a}, config.ProtoPort{Protocol:"tcp", Port:0x1a0b}}, FailsafeOutboundHostPorts:[]config.ProtoPort{config.ProtoPort{Protocol:"udp", Port:0x35}, config.ProtoPort{Protocol:"udp", Port:0x43}, config.ProtoPort{Protocol:"tcp", Port:0xb3}, config.ProtoPort{Protocol:"tcp", Port:0x94b}, config.ProtoPort{Protocol:"tcp", Port:0x94c}, config.ProtoPort{Protocol:"tcp", Port:0x1a0a}, config.ProtoPort{Protocol:"tcp", Port:0x1a0b}}, DisableConntrackInvalid:false, NATPortRange:numorstring.Port{MinPort:0x0, MaxPort:0x0, PortName:""}, IptablesNATOutgoingInterfaceFilter:"", NATOutgoingAddress:net.IP(nil)}
+2020-07-10 03:23:53.710 [INFO][58] rule_defs.go 304: Workload to host packets will be accepted.
+2020-07-10 03:23:53.710 [INFO][60] resource.go 260: Target config /etc/calico/confd/config/bird_ipam.cfg has been updated
+2020-07-10 03:23:53.711 [INFO][60] resource.go 260: Target config /etc/calico/confd/config/bird6.cfg has been updated
+2020-07-10 03:23:53.711 [INFO][60] resource.go 260: Target config /etc/calico/confd/config/bird6_ipam.cfg has been updated
+2020-07-10 03:23:53.710 [INFO][58] rule_defs.go 318: filter table allowed packets will be accepted immediately.
+2020-07-10 03:23:53.711 [INFO][58] rule_defs.go 326: mangle table allowed packets will be accepted immediately.
+2020-07-10 03:23:53.713 [INFO][60] resource.go 260: Target config /etc/calico/confd/config/bird_aggr.cfg has been updated
+2020-07-10 03:23:53.714 [INFO][58] feature_detect.go 109: Updating detected iptables features features=iptables.Features{SNATFullyRandom:true, MASQFullyRandom:true, RestoreSupportsLock:true} iptablesVersion=1.8.2 kernelVersion=5.4.0
+2020-07-10 03:23:53.714 [INFO][58] table.go 444: Looked up iptables command backendMode="legacy" candidates=[]string{"iptables-legacy-restore", "iptables-restore"} command="iptables-legacy-restore" ipVersion=0x4 saveOrRestore="restore"
+2020-07-10 03:23:53.714 [INFO][58] table.go 444: Looked up iptables command backendMode="legacy" candidates=[]string{"iptables-legacy-save", "iptables-save"} command="iptables-legacy-save" ipVersion=0x4 saveOrRestore="save"
+2020-07-10 03:23:53.715 [INFO][58] table.go 444: Looked up iptables command backendMode="legacy" candidates=[]string{"iptables-legacy-restore", "iptables-restore"} command="iptables-legacy-restore" ipVersion=0x4 saveOrRestore="restore"
+2020-07-10 03:23:53.715 [INFO][58] table.go 444: Looked up iptables command backendMode="legacy" candidates=[]string{"iptables-legacy-save", "iptables-save"} command="iptables-legacy-save" ipVersion=0x4 saveOrRestore="save"
+2020-07-10 03:23:53.715 [INFO][58] table.go 444: Looked up iptables command backendMode="legacy" candidates=[]string{"iptables-legacy-restore", "iptables-restore"} command="iptables-legacy-restore" ipVersion=0x4 saveOrRestore="restore"
+2020-07-10 03:23:53.715 [INFO][58] table.go 444: Looked up iptables command backendMode="legacy" candidates=[]string{"iptables-legacy-save", "iptables-save"} command="iptables-legacy-save" ipVersion=0x4 saveOrRestore="save"
+2020-07-10 03:23:53.715 [INFO][58] table.go 444: Looked up iptables command backendMode="legacy" candidates=[]string{"iptables-legacy-restore", "iptables-restore"} command="iptables-legacy-restore" ipVersion=0x4 saveOrRestore="restore"
+2020-07-10 03:23:53.715 [INFO][58] table.go 444: Looked up iptables command backendMode="legacy" candidates=[]string{"iptables-legacy-save", "iptables-save"} command="iptables-legacy-save" ipVersion=0x4 saveOrRestore="save"
+2020-07-10 03:23:53.715 [INFO][58] int_dataplane.go 355: Checking if we need to clean up the VXLAN device
+2020-07-10 03:23:53.716 [WARNING][58] int_dataplane.go 357: Failed to query VXLAN device error=Link not found
+2020-07-10 03:23:53.717 [INFO][58] int_dataplane.go 377: XDP acceleration enabled.
+2020-07-10 03:23:53.718 [INFO][60] resource.go 260: Target config /etc/calico/confd/config/bird.cfg has been updated
+2020-07-10 03:23:53.722 [INFO][58] route_table.go 170: Calculated interface name regexp regex="^cali.*"
+2020-07-10 03:23:53.722 [INFO][58] ipsets.go 119: Queueing IP set for creation family="inet" setID="all-ipam-pools" setType="hash:net"
+2020-07-10 03:23:53.722 [INFO][58] ipsets.go 119: Queueing IP set for creation family="inet" setID="masq-ipam-pools" setType="hash:net"
+2020-07-10 03:23:53.722 [INFO][58] int_dataplane.go 531: Registering to report health.
+2020-07-10 03:23:53.723 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-failsafe-in" ipVersion=0x4 table="raw"
+2020-07-10 03:23:53.723 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-failsafe-out" ipVersion=0x4 table="raw"
+2020-07-10 03:23:53.723 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-PREROUTING" ipVersion=0x4 table="raw"
+2020-07-10 03:23:53.723 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-OUTPUT" ipVersion=0x4 table="raw"
+2020-07-10 03:23:53.723 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-FORWARD" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.723 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-INPUT" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.723 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-wl-to-host" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.723 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-failsafe-in" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.723 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-OUTPUT" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.723 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-failsafe-out" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.723 [INFO][58] int_dataplane.go 692: IPIP enabled, starting thread to keep tunnel configuration in sync.
+2020-07-10 03:23:53.723 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-PREROUTING" ipVersion=0x4 table="nat"
+2020-07-10 03:23:53.723 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-POSTROUTING" ipVersion=0x4 table="nat"
+2020-07-10 03:23:53.723 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-OUTPUT" ipVersion=0x4 table="nat"
+2020-07-10 03:23:53.723 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-failsafe-in" ipVersion=0x4 table="mangle"
+2020-07-10 03:23:53.723 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-PREROUTING" ipVersion=0x4 table="mangle"
+2020-07-10 03:23:53.723 [INFO][58] ipip_mgr.go 85: IPIP thread started.
+2020-07-10 03:23:53.726 [INFO][58] ipip_mgr.go 183: Address wasn't present, adding it. addr=172.16.204.2 link="tunl0"
+2020-07-10 03:23:53.740 [INFO][58] int_dataplane.go 759: Set XDP failsafe ports: [{Protocol:tcp Port:22} {Protocol:udp Port:68} {Protocol:tcp Port:179} {Protocol:tcp Port:2379} {Protocol:tcp Port:2380} {Protocol:tcp Port:6666} {Protocol:tcp Port:6667}]
+2020-07-10 03:23:53.740 [INFO][58] daemon.go 307: Connect to the dataplane driver.
+2020-07-10 03:23:53.740 [INFO][58] int_dataplane.go 788: Started internal iptables dataplane driver loop
+2020-07-10 03:23:53.740 [INFO][58] int_dataplane.go 1242: Started internal status report thread
+2020-07-10 03:23:53.741 [INFO][58] int_dataplane.go 1244: Process status reports disabled
+2020-07-10 03:23:53.741 [INFO][58] int_dataplane.go 798: Will refresh IP sets on timer interval=1m30s
+2020-07-10 03:23:53.741 [INFO][58] int_dataplane.go 808: Will refresh routes on timer interval=1m30s
+2020-07-10 03:23:53.741 [INFO][58] iface_monitor.go 86: Interface monitoring thread started.
+2020-07-10 03:23:53.741 [INFO][58] int_dataplane.go 818: Will refresh XDP on timer interval=1m30s
+2020-07-10 03:23:53.741 [INFO][58] iface_monitor.go 93: Subscribed to netlink updates.
+2020-07-10 03:23:53.741 [INFO][58] int_dataplane.go 597: Linux interface state changed. ifaceName="lo" state="up"
+2020-07-10 03:23:53.742 [INFO][58] daemon.go 379: using resource updates where applicable
+2020-07-10 03:23:53.742 [INFO][58] daemon.go 382: Created Syncer syncer=&watchersyncer.watcherSyncer{status:0x0, watcherCaches:[]*watchersyncer.watcherCache{(*watchersyncer.watcherCache)(0xc0001b2000), (*watchersyncer.watcherCache)(0xc0001b2580), (*watchersyncer.watcherCache)(0xc0001b2680), (*watchersyncer.watcherCache)(0xc0001b2880), (*watchersyncer.watcherCache)(0xc0001b2a80), (*watchersyncer.watcherCache)(0xc0001b2c80), (*watchersyncer.watcherCache)(0xc0001b2e80), (*watchersyncer.watcherCache)(0xc0001b3080), (*watchersyncer.watcherCache)(0xc0001b3200), (*watchersyncer.watcherCache)(0xc0001b3300), (*watchersyncer.watcherCache)(0xc0001b3400), (*watchersyncer.watcherCache)(0xc0001b3500)}, results:(chan interface {})(0xc0000867e0), numSynced:0, callbacks:(*calc.SyncerCallbacksDecoupler)(0xc00067e270), wgwc:(*sync.WaitGroup)(nil), wgws:(*sync.WaitGroup)(nil), cancel:(context.CancelFunc)(nil)}
+2020-07-10 03:23:53.742 [INFO][58] int_dataplane.go 630: Linux interface addrs changed. addrs=set.mapSet{"127.0.0.1":set.empty{}, "::1":set.empty{}} ifaceName="lo"
+2020-07-10 03:23:53.742 [INFO][58] int_dataplane.go 849: Received interface update msg=&intdataplane.ifaceUpdate{Name:"lo", State:"up"}
+2020-07-10 03:23:53.742 [INFO][58] int_dataplane.go 597: Linux interface state changed. ifaceName="enp2s0" state="up"
+2020-07-10 03:23:53.742 [INFO][58] daemon.go 386: Starting the datastore Syncer
+2020-07-10 03:23:53.742 [INFO][58] int_dataplane.go 849: Received interface update msg=&intdataplane.ifaceUpdate{Name:"enp2s0", State:"up"}
+2020-07-10 03:23:53.742 [INFO][58] watchersyncer.go 89: Start called
+2020-07-10 03:23:53.742 [INFO][58] calc_graph.go 110: Creating calculation graph, filtered to hostname edge01
+2020-07-10 03:23:53.742 [INFO][58] watchersyncer.go 127: Sending status update Status=wait-for-ready
+2020-07-10 03:23:53.742 [INFO][58] int_dataplane.go 867: Received interface addresses update msg=&intdataplane.ifaceAddrsUpdate{Name:"lo", Addrs:set.mapSet{"127.0.0.1":set.empty{}, "::1":set.empty{}}}
+2020-07-10 03:23:53.742 [INFO][58] int_dataplane.go 630: Linux interface addrs changed. addrs=set.mapSet{"192.168.0.134":set.empty{}, "fe80::5c8b:83f4:db44:5047":set.empty{}} ifaceName="enp2s0"
+2020-07-10 03:23:53.742 [INFO][58] dispatcher.go 68: Registering listener for type model.WorkloadEndpointKey: (dispatcher.UpdateHandler)(0x1621080)
+2020-07-10 03:23:53.742 [INFO][58] hostip_mgr.go 84: Interface addrs changed. update=&intdataplane.ifaceAddrsUpdate{Name:"lo", Addrs:set.mapSet{"127.0.0.1":set.empty{}, "::1":set.empty{}}}
+2020-07-10 03:23:53.742 [INFO][58] dispatcher.go 68: Registering listener for type model.HostEndpointKey: (dispatcher.UpdateHandler)(0x1621080)
+2020-07-10 03:23:53.743 [INFO][58] dispatcher.go 68: Registering listener for type model.WorkloadEndpointKey: (dispatcher.UpdateHandler)(0x1621160)
+2020-07-10 03:23:53.742 [INFO][58] ipsets.go 119: Queueing IP set for creation family="inet" setID="this-host" setType="hash:ip"
+2020-07-10 03:23:53.743 [INFO][58] dispatcher.go 68: Registering listener for type model.HostEndpointKey: (dispatcher.UpdateHandler)(0x1621160)
+2020-07-10 03:23:53.743 [INFO][58] int_dataplane.go 867: Received interface addresses update msg=&intdataplane.ifaceAddrsUpdate{Name:"enp2s0", Addrs:set.mapSet{"192.168.0.134":set.empty{}, "fe80::5c8b:83f4:db44:5047":set.empty{}}}
+2020-07-10 03:23:53.743 [INFO][58] int_dataplane.go 630: Linux interface addrs changed. addrs=set.mapSet{} ifaceName="wlp3s0"
+2020-07-10 03:23:53.743 [INFO][58] hostip_mgr.go 84: Interface addrs changed. update=&intdataplane.ifaceAddrsUpdate{Name:"enp2s0", Addrs:set.mapSet{"192.168.0.134":set.empty{}, "fe80::5c8b:83f4:db44:5047":set.empty{}}}
+2020-07-10 03:23:53.743 [INFO][58] dispatcher.go 68: Registering listener for type model.WorkloadEndpointKey: (dispatcher.UpdateHandler)(0x1620f50)
+2020-07-10 03:23:53.743 [INFO][58] ipsets.go 119: Queueing IP set for creation family="inet" setID="this-host" setType="hash:ip"
+2020-07-10 03:23:53.743 [INFO][58] int_dataplane.go 867: Received interface addresses update msg=&intdataplane.ifaceAddrsUpdate{Name:"wlp3s0", Addrs:set.mapSet{}}
+2020-07-10 03:23:53.743 [INFO][58] dispatcher.go 68: Registering listener for type model.HostEndpointKey: (dispatcher.UpdateHandler)(0x1620f50)
+2020-07-10 03:23:53.743 [INFO][58] int_dataplane.go 630: Linux interface addrs changed. addrs=set.mapSet{"172.17.0.1":set.empty{}} ifaceName="docker0"
+2020-07-10 03:23:53.743 [INFO][58] hostip_mgr.go 84: Interface addrs changed. update=&intdataplane.ifaceAddrsUpdate{Name:"wlp3s0", Addrs:set.mapSet{}}
+2020-07-10 03:23:53.743 [INFO][58] ipsets.go 119: Queueing IP set for creation family="inet" setID="this-host" setType="hash:ip"
+2020-07-10 03:23:53.743 [INFO][58] dispatcher.go 68: Registering listener for type model.PolicyKey: (dispatcher.UpdateHandler)(0x1620f50)
+2020-07-10 03:23:53.743 [INFO][58] int_dataplane.go 597: Linux interface state changed. ifaceName="tunl0" state="up"
+2020-07-10 03:23:53.743 [INFO][58] int_dataplane.go 867: Received interface addresses update msg=&intdataplane.ifaceAddrsUpdate{Name:"docker0", Addrs:set.mapSet{"172.17.0.1":set.empty{}}}
+2020-07-10 03:23:53.743 [INFO][58] hostip_mgr.go 84: Interface addrs changed. update=&intdataplane.ifaceAddrsUpdate{Name:"docker0", Addrs:set.mapSet{"172.17.0.1":set.empty{}}}
+2020-07-10 03:23:53.743 [INFO][58] dispatcher.go 68: Registering listener for type model.ProfileRulesKey: (dispatcher.UpdateHandler)(0x1620f50)
+2020-07-10 03:23:53.743 [INFO][58] ipsets.go 119: Queueing IP set for creation family="inet" setID="this-host" setType="hash:ip"
+2020-07-10 03:23:53.743 [INFO][58] int_dataplane.go 849: Received interface update msg=&intdataplane.ifaceUpdate{Name:"tunl0", State:"up"}
+2020-07-10 03:23:53.743 [INFO][58] int_dataplane.go 630: Linux interface addrs changed. addrs=set.mapSet{"172.16.204.2":set.empty{}} ifaceName="tunl0"
+2020-07-10 03:23:53.743 [INFO][58] dispatcher.go 68: Registering listener for type model.ProfileLabelsKey: (dispatcher.UpdateHandler)(0x1620f50)
+2020-07-10 03:23:53.743 [INFO][58] int_dataplane.go 597: Linux interface state changed. ifaceName="cali3e6ce77ec27" state="up"
+2020-07-10 03:23:53.743 [INFO][58] dispatcher.go 68: Registering listener for type model.ProfileTagsKey: (dispatcher.UpdateHandler)(0x1620f50)
+2020-07-10 03:23:53.743 [INFO][58] dispatcher.go 68: Registering listener for type model.ProfileTagsKey: (dispatcher.UpdateHandler)(0x156e660)
+2020-07-10 03:23:53.743 [INFO][58] int_dataplane.go 630: Linux interface addrs changed. addrs=set.mapSet{"fe80::ecee:eeff:feee:eeee":set.empty{}} ifaceName="cali3e6ce77ec27"
+2020-07-10 03:23:53.743 [INFO][58] dispatcher.go 68: Registering listener for type model.ProfileLabelsKey: (dispatcher.UpdateHandler)(0x156e660)
+2020-07-10 03:23:53.743 [INFO][58] int_dataplane.go 867: Received interface addresses update msg=&intdataplane.ifaceAddrsUpdate{Name:"tunl0", Addrs:set.mapSet{"172.16.204.2":set.empty{}}}
+2020-07-10 03:23:53.744 [INFO][58] int_dataplane.go 597: Linux interface state changed. ifaceName="calic58bd5e474f" state="up"
+2020-07-10 03:23:53.744 [INFO][58] hostip_mgr.go 84: Interface addrs changed. update=&intdataplane.ifaceAddrsUpdate{Name:"tunl0", Addrs:set.mapSet{"172.16.204.2":set.empty{}}}
+2020-07-10 03:23:53.744 [INFO][58] dispatcher.go 68: Registering listener for type model.WorkloadEndpointKey: (dispatcher.UpdateHandler)(0x156e660)
+2020-07-10 03:23:53.744 [INFO][58] int_dataplane.go 630: Linux interface addrs changed. addrs=set.mapSet{"fe80::ecee:eeff:feee:eeee":set.empty{}} ifaceName="calic58bd5e474f"
+2020-07-10 03:23:53.744 [INFO][58] ipsets.go 119: Queueing IP set for creation family="inet" setID="this-host" setType="hash:ip"
+2020-07-10 03:23:53.744 [INFO][58] dispatcher.go 68: Registering listener for type model.HostEndpointKey: (dispatcher.UpdateHandler)(0x156e660)
+2020-07-10 03:23:53.744 [INFO][58] int_dataplane.go 867: Received interface addresses update msg=&intdataplane.ifaceAddrsUpdate{Name:"cali3e6ce77ec27", Addrs:set.mapSet{"fe80::ecee:eeff:feee:eeee":set.empty{}}}
+2020-07-10 03:23:53.744 [INFO][58] dispatcher.go 68: Registering listener for type model.NetworkSetKey: (dispatcher.UpdateHandler)(0x156e660)
+2020-07-10 03:23:53.744 [INFO][58] hostip_mgr.go 84: Interface addrs changed. update=&intdataplane.ifaceAddrsUpdate{Name:"cali3e6ce77ec27", Addrs:set.mapSet{"fe80::ecee:eeff:feee:eeee":set.empty{}}}
+2020-07-10 03:23:53.744 [INFO][58] dispatcher.go 68: Registering listener for type model.PolicyKey: (dispatcher.UpdateHandler)(0x16213b0)
+2020-07-10 03:23:53.744 [INFO][58] dispatcher.go 68: Registering listener for type model.WorkloadEndpointKey: (dispatcher.UpdateHandler)(0x16213b0)
+2020-07-10 03:23:53.744 [INFO][58] int_dataplane.go 867: Received interface addresses update msg=&intdataplane.ifaceAddrsUpdate{Name:"calic58bd5e474f", Addrs:set.mapSet{"fe80::ecee:eeff:feee:eeee":set.empty{}}}
+2020-07-10 03:23:53.744 [INFO][58] dispatcher.go 68: Registering listener for type model.HostEndpointKey: (dispatcher.UpdateHandler)(0x16213b0)
+2020-07-10 03:23:53.744 [INFO][58] hostip_mgr.go 84: Interface addrs changed. update=&intdataplane.ifaceAddrsUpdate{Name:"calic58bd5e474f", Addrs:set.mapSet{"fe80::ecee:eeff:feee:eeee":set.empty{}}}
+2020-07-10 03:23:53.744 [INFO][58] dispatcher.go 68: Registering listener for type model.HostIPKey: (dispatcher.UpdateHandler)(0x16212d0)
+2020-07-10 03:23:53.744 [INFO][58] dispatcher.go 68: Registering listener for type model.IPPoolKey: (dispatcher.UpdateHandler)(0x16212d0)
+2020-07-10 03:23:53.744 [INFO][58] dispatcher.go 68: Registering listener for type model.GlobalConfigKey: (dispatcher.UpdateHandler)(0x16211f0)
+2020-07-10 03:23:53.744 [INFO][58] int_dataplane.go 849: Received interface update msg=&intdataplane.ifaceUpdate{Name:"cali3e6ce77ec27", State:"up"}
+2020-07-10 03:23:53.744 [INFO][58] dispatcher.go 68: Registering listener for type model.HostConfigKey: (dispatcher.UpdateHandler)(0x16211f0)
+2020-07-10 03:23:53.744 [INFO][58] dispatcher.go 68: Registering listener for type model.ReadyFlagKey: (dispatcher.UpdateHandler)(0x16211f0)
+2020-07-10 03:23:53.744 [INFO][58] int_dataplane.go 849: Received interface update msg=&intdataplane.ifaceUpdate{Name:"calic58bd5e474f", State:"up"}
+2020-07-10 03:23:53.744 [INFO][58] dispatcher.go 68: Registering listener for type model.ProfileLabelsKey: (dispatcher.UpdateHandler)(0x1621500)
+2020-07-10 03:23:53.745 [INFO][58] dispatcher.go 68: Registering listener for type model.HostIPKey: (dispatcher.UpdateHandler)(0x1621590)
+2020-07-10 03:23:53.745 [INFO][58] dispatcher.go 68: Registering listener for type model.WorkloadEndpointKey: (dispatcher.UpdateHandler)(0x1621590)
+2020-07-10 03:23:53.745 [INFO][58] dispatcher.go 68: Registering listener for type model.HostEndpointKey: (dispatcher.UpdateHandler)(0x1621590)
+2020-07-10 03:23:53.745 [INFO][58] dispatcher.go 68: Registering listener for type model.HostConfigKey: (dispatcher.UpdateHandler)(0x1621590)
+2020-07-10 03:23:53.745 [INFO][58] async_calc_graph.go 229: Starting AsyncCalcGraph
+2020-07-10 03:23:53.745 [INFO][58] daemon.go 492: Started the processing graph
+2020-07-10 03:23:53.745 [INFO][58] daemon.go 863: Reading from dataplane driver pipe...
+2020-07-10 03:23:53.745 [INFO][58] watchersyncer.go 147: Starting main event processing loop
+2020-07-10 03:23:53.746 [INFO][58] async_calc_graph.go 134: AsyncCalcGraph running
+2020-07-10 03:23:53.745 [INFO][58] int_dataplane.go 834: Received *proto.ConfigUpdate update from calculation graph msg=config:<key:"CalicoVersion" value:"v3.11.2" > config:<key:"ClusterGUID" value:"2b0d82dade4c4cd9bcb7040cb7946372" > config:<key:"ClusterType" value:"k8s,bgp,kdd" > config:<key:"DatastoreType" value:"kubernetes" > config:<key:"DefaultEndpointToHostAction" value:"ACCEPT" > config:<key:"FelixHostname" value:"edge01" > config:<key:"HealthEnabled" value:"true" > config:<key:"IpInIpEnabled" value:"true" > config:<key:"IpInIpMtu" value:"1440" > config:<key:"IpInIpTunnelAddr" value:"172.16.204.2" > config:<key:"Ipv6Support" value:"false" > config:<key:"LogFilePath" value:"None" > config:<key:"LogSeverityFile" value:"None" > config:<key:"LogSeverityScreen" value:"info" > config:<key:"LogSeveritySys" value:"None" > config:<key:"MetadataAddr" value:"None" > config:<key:"ReportingIntervalSecs" value:"0" > 
+2020-07-10 03:23:53.746 [INFO][58] daemon.go 588: No driver process to monitor
+2020-07-10 03:23:53.751 [INFO][58] watchercache.go 289: Sending synced update ListRoot="/calico/resources/v3/projectcalico.org/networksets"
+2020-07-10 03:23:53.751 [INFO][58] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.752 [INFO][58] watchersyncer.go 127: Sending status update Status=resync
+2020-07-10 03:23:53.752 [INFO][58] watchercache.go 289: Sending synced update ListRoot="/calico/resources/v3/projectcalico.org/felixconfigurations"
+2020-07-10 03:23:53.752 [INFO][58] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.752 [INFO][58] watchercache.go 289: Sending synced update ListRoot="/calico/resources/v3/projectcalico.org/ippools"
+2020-07-10 03:23:53.753 [INFO][58] watchercache.go 289: Sending synced update ListRoot="/calico/resources/v3/projectcalico.org/globalnetworksets"
+2020-07-10 03:23:53.753 [INFO][58] watchercache.go 289: Sending synced update ListRoot="/calico/resources/v3/projectcalico.org/globalnetworkpolicies"
+2020-07-10 03:23:53.753 [INFO][58] watchercache.go 289: Sending synced update ListRoot="/calico/resources/v3/projectcalico.org/clusterinformations"
+2020-07-10 03:23:53.753 [INFO][58] watchercache.go 289: Sending synced update ListRoot="/calico/resources/v3/projectcalico.org/hostendpoints"
+2020-07-10 03:23:53.754 [INFO][58] config_batcher.go 74: Global config update: {{GlobalFelixConfig(name=LogSeverityScreen) Info 128678 <nil> 0s} 1}
+2020-07-10 03:23:53.754 [INFO][58] config_batcher.go 74: Global config update: {{GlobalFelixConfig(name=IpInIpEnabled) true 128678 <nil> 0s} 1}
+2020-07-10 03:23:53.754 [INFO][58] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.754 [INFO][58] config_batcher.go 74: Global config update: {{GlobalFelixConfig(name=ReportingIntervalSecs) 0 128678 <nil> 0s} 1}
+2020-07-10 03:23:53.754 [INFO][58] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.754 [INFO][58] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.754 [INFO][58] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.754 [INFO][58] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.755 [INFO][58] config_batcher.go 74: Global config update: {{GlobalFelixConfig(name=ClusterGUID) 2b0d82dade4c4cd9bcb7040cb7946372 128677 <nil> 0s} 1}
+2020-07-10 03:23:53.755 [INFO][58] config_batcher.go 74: Global config update: {{GlobalFelixConfig(name=ClusterType) k8s,bgp,kdd 128677 <nil> 0s} 1}
+2020-07-10 03:23:53.755 [INFO][58] config_batcher.go 74: Global config update: {{GlobalFelixConfig(name=CalicoVersion) v3.11.2 128677 <nil> 0s} 1}
+2020-07-10 03:23:53.755 [INFO][58] int_dataplane.go 834: Received *proto.IPAMPoolUpdate update from calculation graph msg=id:"172.16.0.0-16" pool:<cidr:"172.16.0.0/16" masquerade:true > 
+2020-07-10 03:23:53.755 [INFO][58] networkpolicy.go 283: Returning NP KVPs KVPs=&model.KVPairList{KVPairs:[]*model.KVPair{}, Revision:"28939333/28939333"}
+2020-07-10 03:23:53.756 [INFO][58] watchercache.go 289: Sending synced update ListRoot="/calico/resources/v3/projectcalico.org/networkpolicies"
+2020-07-10 03:23:53.756 [INFO][58] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.757 [INFO][60] resource.go 260: Target config /tmp/tunl-ip has been updated
+2020-07-10 03:23:53.758 [INFO][58] watchercache.go 289: Sending synced update ListRoot="/calico/resources/v3/projectcalico.org/profiles"
+2020-07-10 03:23:53.759 [INFO][58] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.760 [INFO][58] watchercache.go 289: Sending synced update ListRoot="/calico/resources/v3/projectcalico.org/nodes"
+2020-07-10 03:23:53.761 [INFO][58] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.761 [INFO][58] config_batcher.go 61: Host config update for this host: {{HostConfig(node=edge01,name=IpInIpTunnelAddr) 172.16.204.2 28939326 <nil> 0s} 1}
+2020-07-10 03:23:53.763 [INFO][58] watchercache.go 289: Sending synced update ListRoot="/calico/ipam/v2/assignment/"
+2020-07-10 03:23:53.763 [INFO][58] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.765 [INFO][58] int_dataplane.go 834: Received *proto.ServiceAccountUpdate update from calculation graph msg=id:<namespace:"ingress-nginx" name:"ingress-nginx" > labels:<key:"app.kubernetes.io/component" value:"controller" > labels:<key:"app.kubernetes.io/instance" value:"ingress-nginx" > labels:<key:"app.kubernetes.io/managed-by" value:"Helm" > labels:<key:"app.kubernetes.io/name" value:"ingress-nginx" > labels:<key:"app.kubernetes.io/version" value:"0.32.0" > labels:<key:"helm.sh/chart" value:"ingress-nginx-2.0.3" > 
+2020-07-10 03:23:53.765 [INFO][58] int_dataplane.go 834: Received *proto.ServiceAccountUpdate update from calculation graph msg=id:<namespace:"ingress-nginx" name:"ingress-nginx-admission" > labels:<key:"app.kubernetes.io/component" value:"admission-webhook" > labels:<key:"app.kubernetes.io/instance" value:"ingress-nginx" > labels:<key:"app.kubernetes.io/managed-by" value:"Helm" > labels:<key:"app.kubernetes.io/name" value:"ingress-nginx" > labels:<key:"app.kubernetes.io/version" value:"0.32.0" > labels:<key:"helm.sh/chart" value:"ingress-nginx-2.0.3" > 
+2020-07-10 03:23:53.765 [INFO][58] int_dataplane.go 834: Received *proto.ServiceAccountUpdate update from calculation graph msg=id:<namespace:"kubernetes-dashboard" name:"kubernetes-dashboard" > labels:<key:"k8s-app" value:"kubernetes-dashboard" > 
+2020-07-10 03:23:53.765 [INFO][58] int_dataplane.go 834: Received *proto.ServiceAccountUpdate update from calculation graph msg=id:<namespace:"rook-ceph" name:"rook-ceph-system" > labels:<key:"operator" value:"rook" > labels:<key:"storage-backend" value:"ceph" > 
+2020-07-10 03:23:53.766 [INFO][58] int_dataplane.go 834: Received *proto.NamespaceUpdate update from calculation graph msg=id:<name:"ingress-nginx" > labels:<key:"app.kubernetes.io/instance" value:"ingress-nginx" > labels:<key:"app.kubernetes.io/name" value:"ingress-nginx" > 
+2020-07-10 03:23:53.766 [INFO][58] int_dataplane.go 834: Received *proto.HostMetadataUpdate update from calculation graph msg=hostname:"edge01" ipv4_addr:"192.168.0.134" 
+2020-07-10 03:23:53.766 [INFO][58] int_dataplane.go 834: Received *proto.HostMetadataUpdate update from calculation graph msg=hostname:"master" ipv4_addr:"192.168.0.95" 
+2020-07-10 03:23:53.766 [INFO][58] int_dataplane.go 834: Received *proto.HostMetadataUpdate update from calculation graph msg=hostname:"ai01" ipv4_addr:"192.168.0.114" 
+2020-07-10 03:23:53.766 [INFO][58] int_dataplane.go 834: Received *proto.HostMetadataUpdate update from calculation graph msg=hostname:"ai02" ipv4_addr:"192.168.0.180" 
+2020-07-10 03:23:53.766 [INFO][58] int_dataplane.go 834: Received *proto.HostMetadataUpdate update from calculation graph msg=hostname:"ai03" ipv4_addr:"192.168.0.34" 
+2020-07-10 03:23:53.766 [INFO][58] int_dataplane.go 834: Received *proto.HostMetadataUpdate update from calculation graph msg=hostname:"ai04" ipv4_addr:"192.168.0.91" 
+2020-07-10 03:23:53.766 [INFO][58] int_dataplane.go 834: Received *proto.HostMetadataUpdate update from calculation graph msg=hostname:"ai05" ipv4_addr:"192.168.0.168" 
+2020-07-10 03:23:53.835 [INFO][58] watchercache.go 289: Sending synced update ListRoot="/calico/resources/v3/projectcalico.org/workloadendpoints"
+2020-07-10 03:23:53.835 [INFO][58] calc_graph.go 392: Local endpoint updated id=WorkloadEndpoint(node=edge01, orchestrator=k8s, workload=kube-system/nvidia-device-plugin-daemonset-whc7f, name=eth0)
+2020-07-10 03:23:53.835 [INFO][58] watchersyncer.go 209: Received InSync event from one of the watcher caches
+2020-07-10 03:23:53.835 [INFO][58] watchersyncer.go 221: All watchers have sync'd data - sending data and final sync
+2020-07-10 03:23:53.835 [INFO][58] watchersyncer.go 127: Sending status update Status=in-sync
+2020-07-10 03:23:53.835 [INFO][58] int_dataplane.go 834: Received *proto.ActiveProfileUpdate update from calculation graph msg=id:<name:"kns.kube-system" > profile:<inbound_rules:<action:"allow" rule_id:"YlN-KJA93B7Fe2ih" > outbound_rules:<action:"allow" rule_id:"GUM3x2IgYhIM5cBY" > > 
+2020-07-10 03:23:53.836 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-pri-kns.kube-system" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.836 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-pro-kns.kube-system" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.836 [INFO][58] int_dataplane.go 834: Received *proto.ActiveProfileUpdate update from calculation graph msg=id:<name:"ksa.kube-system.default" > profile:<> 
+2020-07-10 03:23:53.836 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-pri-_hNSGmJYNT8uLIzxesP" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.836 [INFO][58] calc_graph.go 392: Local endpoint updated id=WorkloadEndpoint(node=edge01, orchestrator=k8s, workload=rook-ceph/rook-discover-6bd2n, name=eth0)
+2020-07-10 03:23:53.836 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-pro-_hNSGmJYNT8uLIzxesP" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.837 [INFO][58] config_batcher.go 102: Datamodel in sync, flushing config update
+2020-07-10 03:23:53.837 [INFO][58] config_batcher.go 112: Sending config update global: map[CalicoVersion:v3.11.2 ClusterGUID:2b0d82dade4c4cd9bcb7040cb7946372 ClusterType:k8s,bgp,kdd IpInIpEnabled:true LogSeverityScreen:Info ReportingIntervalSecs:0], host: map[IpInIpTunnelAddr:172.16.204.2].
+2020-07-10 03:23:53.837 [INFO][58] async_calc_graph.go 160: First time we've been in sync
+2020-07-10 03:23:53.837 [INFO][58] health.go 133: Health of component changed lastReport=health.HealthReport{Live:true, Ready:false} name="async_calc_graph" newReport=&health.HealthReport{Live:true, Ready:true}
+2020-07-10 03:23:53.837 [INFO][58] event_sequencer.go 222: Possible config update. global=map[string]string{"CalicoVersion":"v3.11.2", "ClusterGUID":"2b0d82dade4c4cd9bcb7040cb7946372", "ClusterType":"k8s,bgp,kdd", "IpInIpEnabled":"true", "LogSeverityScreen":"Info", "ReportingIntervalSecs":"0"} host=map[string]string{"IpInIpTunnelAddr":"172.16.204.2"}
+2020-07-10 03:23:53.837 [INFO][58] usagerep.go 83: Waiting before first check-in delay=5m4.46s
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 253: Merging in config from datastore (global): map[CalicoVersion:v3.11.2 ClusterGUID:2b0d82dade4c4cd9bcb7040cb7946372 ClusterType:k8s,bgp,kdd IpInIpEnabled:true LogSeverityScreen:Info ReportingIntervalSecs:0]
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 334: Parsing value for DefaultEndpointToHostAction: ACCEPT (from environment variable)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 370: Parsed value for DefaultEndpointToHostAction: ACCEPT (from environment variable)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 334: Parsing value for IpInIpMtu: 1440 (from environment variable)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 370: Parsed value for IpInIpMtu: 1440 (from environment variable)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 334: Parsing value for LogSeverityScreen: info (from environment variable)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 370: Parsed value for LogSeverityScreen: INFO (from environment variable)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 334: Parsing value for HealthEnabled: true (from environment variable)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 370: Parsed value for HealthEnabled: true (from environment variable)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 334: Parsing value for Ipv6Support: false (from environment variable)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 370: Parsed value for Ipv6Support: false (from environment variable)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 334: Parsing value for DatastoreType: kubernetes (from environment variable)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 370: Parsed value for DatastoreType: kubernetes (from environment variable)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 334: Parsing value for FelixHostname: edge01 (from environment variable)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 370: Parsed value for FelixHostname: edge01 (from environment variable)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 334: Parsing value for MetadataAddr: None (from config file)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 370: Parsed value for MetadataAddr:  (from config file)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 334: Parsing value for LogFilePath: None (from config file)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 370: Parsed value for LogFilePath:  (from config file)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 334: Parsing value for LogSeverityFile: None (from config file)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 370: Parsed value for LogSeverityFile:  (from config file)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 334: Parsing value for LogSeveritySys: None (from config file)
+2020-07-10 03:23:53.837 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.838 [INFO][58] config_params.go 370: Parsed value for LogSeveritySys:  (from config file)
+2020-07-10 03:23:53.838 [INFO][58] config_params.go 334: Parsing value for IpInIpTunnelAddr: 172.16.204.2 (from datastore (per-host))
+2020-07-10 03:23:53.838 [INFO][58] config_params.go 370: Parsed value for IpInIpTunnelAddr: 172.16.204.2 (from datastore (per-host))
+2020-07-10 03:23:53.838 [INFO][58] config_params.go 334: Parsing value for CalicoVersion: v3.11.2 (from datastore (global))
+2020-07-10 03:23:53.838 [INFO][58] config_params.go 370: Parsed value for CalicoVersion: v3.11.2 (from datastore (global))
+2020-07-10 03:23:53.838 [INFO][58] config_params.go 334: Parsing value for LogSeverityScreen: Info (from datastore (global))
+2020-07-10 03:23:53.838 [INFO][58] config_params.go 370: Parsed value for LogSeverityScreen: INFO (from datastore (global))
+2020-07-10 03:23:53.838 [INFO][58] config_params.go 373: Skipping config value for LogSeverityScreen from datastore (global); already have a value from environment variable
+2020-07-10 03:23:53.838 [INFO][58] config_params.go 334: Parsing value for IpInIpEnabled: true (from datastore (global))
+2020-07-10 03:23:53.838 [INFO][58] config_params.go 370: Parsed value for IpInIpEnabled: true (from datastore (global))
+2020-07-10 03:23:53.838 [INFO][58] config_params.go 334: Parsing value for ReportingIntervalSecs: 0 (from datastore (global))
+2020-07-10 03:23:53.838 [INFO][58] config_params.go 370: Parsed value for ReportingIntervalSecs: 0s (from datastore (global))
+2020-07-10 03:23:53.839 [INFO][58] config_params.go 334: Parsing value for ClusterGUID: 2b0d82dade4c4cd9bcb7040cb7946372 (from datastore (global))
+2020-07-10 03:23:53.839 [INFO][58] config_params.go 370: Parsed value for ClusterGUID: 2b0d82dade4c4cd9bcb7040cb7946372 (from datastore (global))
+2020-07-10 03:23:53.839 [INFO][58] config_params.go 334: Parsing value for ClusterType: k8s,bgp,kdd (from datastore (global))
+2020-07-10 03:23:53.839 [INFO][58] config_params.go 370: Parsed value for ClusterType: k8s,bgp,kdd (from datastore (global))
+2020-07-10 03:23:53.839 [INFO][58] config_params.go 253: Merging in config from datastore (per-host): map[IpInIpTunnelAddr:172.16.204.2]
+2020-07-10 03:23:53.839 [INFO][58] config_params.go 334: Parsing value for HealthEnabled: true (from environment variable)
+2020-07-10 03:23:53.839 [INFO][58] config_params.go 370: Parsed value for HealthEnabled: true (from environment variable)
+2020-07-10 03:23:53.839 [INFO][58] config_params.go 334: Parsing value for Ipv6Support: false (from environment variable)
+2020-07-10 03:23:53.839 [INFO][58] config_params.go 370: Parsed value for Ipv6Support: false (from environment variable)
+2020-07-10 03:23:53.839 [INFO][58] config_params.go 334: Parsing value for DatastoreType: kubernetes (from environment variable)
+2020-07-10 03:23:53.839 [INFO][58] config_params.go 370: Parsed value for DatastoreType: kubernetes (from environment variable)
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 334: Parsing value for FelixHostname: edge01 (from environment variable)
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 370: Parsed value for FelixHostname: edge01 (from environment variable)
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 334: Parsing value for DefaultEndpointToHostAction: ACCEPT (from environment variable)
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 370: Parsed value for DefaultEndpointToHostAction: ACCEPT (from environment variable)
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 334: Parsing value for IpInIpMtu: 1440 (from environment variable)
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 370: Parsed value for IpInIpMtu: 1440 (from environment variable)
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 334: Parsing value for LogSeverityScreen: info (from environment variable)
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 370: Parsed value for LogSeverityScreen: INFO (from environment variable)
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 334: Parsing value for MetadataAddr: None (from config file)
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 370: Parsed value for MetadataAddr:  (from config file)
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 334: Parsing value for LogFilePath: None (from config file)
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 370: Parsed value for LogFilePath:  (from config file)
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 334: Parsing value for LogSeverityFile: None (from config file)
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.840 [INFO][58] config_params.go 370: Parsed value for LogSeverityFile:  (from config file)
+2020-07-10 03:23:53.841 [INFO][58] config_params.go 334: Parsing value for LogSeveritySys: None (from config file)
+2020-07-10 03:23:53.841 [INFO][58] config_params.go 351: Value set to 'none', replacing with zero-value: "".
+2020-07-10 03:23:53.841 [INFO][58] config_params.go 370: Parsed value for LogSeveritySys:  (from config file)
+2020-07-10 03:23:53.841 [INFO][58] config_params.go 334: Parsing value for IpInIpTunnelAddr: 172.16.204.2 (from datastore (per-host))
+2020-07-10 03:23:53.841 [INFO][58] config_params.go 370: Parsed value for IpInIpTunnelAddr: 172.16.204.2 (from datastore (per-host))
+2020-07-10 03:23:53.841 [INFO][58] config_params.go 334: Parsing value for ClusterType: k8s,bgp,kdd (from datastore (global))
+2020-07-10 03:23:53.841 [INFO][58] config_params.go 370: Parsed value for ClusterType: k8s,bgp,kdd (from datastore (global))
+2020-07-10 03:23:53.841 [INFO][58] config_params.go 334: Parsing value for CalicoVersion: v3.11.2 (from datastore (global))
+2020-07-10 03:23:53.841 [INFO][58] config_params.go 370: Parsed value for CalicoVersion: v3.11.2 (from datastore (global))
+2020-07-10 03:23:53.841 [INFO][58] config_params.go 334: Parsing value for LogSeverityScreen: Info (from datastore (global))
+2020-07-10 03:23:53.841 [INFO][58] config_params.go 370: Parsed value for LogSeverityScreen: INFO (from datastore (global))
+2020-07-10 03:23:53.842 [INFO][58] config_params.go 373: Skipping config value for LogSeverityScreen from datastore (global); already have a value from environment variable
+2020-07-10 03:23:53.842 [INFO][58] config_params.go 334: Parsing value for IpInIpEnabled: true (from datastore (global))
+2020-07-10 03:23:53.842 [INFO][58] config_params.go 370: Parsed value for IpInIpEnabled: true (from datastore (global))
+2020-07-10 03:23:53.842 [INFO][58] config_params.go 334: Parsing value for ReportingIntervalSecs: 0 (from datastore (global))
+2020-07-10 03:23:53.842 [INFO][58] config_params.go 370: Parsed value for ReportingIntervalSecs: 0s (from datastore (global))
+2020-07-10 03:23:53.842 [INFO][58] config_params.go 334: Parsing value for ClusterGUID: 2b0d82dade4c4cd9bcb7040cb7946372 (from datastore (global))
+2020-07-10 03:23:53.842 [INFO][58] config_params.go 370: Parsed value for ClusterGUID: 2b0d82dade4c4cd9bcb7040cb7946372 (from datastore (global))
+2020-07-10 03:23:53.843 [INFO][58] async_calc_graph.go 209: First flush after becoming in sync, sending InSync message.
+2020-07-10 03:23:53.843 [INFO][58] daemon.go 947: Datastore now in sync.
+2020-07-10 03:23:53.843 [INFO][58] int_dataplane.go 834: Received *proto.ActiveProfileUpdate update from calculation graph msg=id:<name:"kns.rook-ceph" > profile:<inbound_rules:<action:"allow" rule_id:"18iwmfKmvRgyxJIf" > outbound_rules:<action:"allow" rule_id:"a6WJLKdY1MzxVTrM" > > 
+2020-07-10 03:23:53.843 [INFO][58] daemon.go 949: Datastore in sync for first time, sending message to status reporter.
+2020-07-10 03:23:53.843 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-pri-kns.rook-ceph" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.843 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-pro-kns.rook-ceph" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.843 [INFO][58] int_dataplane.go 834: Received *proto.ActiveProfileUpdate update from calculation graph msg=id:<name:"ksa.rook-ceph.rook-ceph-system" > profile:<> 
+2020-07-10 03:23:53.843 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-pri-_BUR-44CwZtveutFoFY" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.843 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-pro-_BUR-44CwZtveutFoFY" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.843 [INFO][58] int_dataplane.go 834: Received *proto.WorkloadEndpointUpdate update from calculation graph msg=id:<orchestrator_id:"k8s" workload_id:"kube-system/nvidia-device-plugin-daemonset-whc7f" endpoint_id:"eth0" > endpoint:<state:"active" name:"cali3e6ce77ec27" profile_ids:"kns.kube-system" profile_ids:"ksa.kube-system.default" ipv4_nets:"172.16.204.0/32" > 
+2020-07-10 03:23:53.843 [INFO][58] int_dataplane.go 834: Received *proto.WorkloadEndpointUpdate update from calculation graph msg=id:<orchestrator_id:"k8s" workload_id:"rook-ceph/rook-discover-6bd2n" endpoint_id:"eth0" > endpoint:<state:"active" name:"calic58bd5e474f" profile_ids:"kns.rook-ceph" profile_ids:"ksa.rook-ceph.rook-ceph-system" ipv4_nets:"172.16.204.1/32" > 
+2020-07-10 03:23:53.843 [INFO][58] int_dataplane.go 834: Received *proto.InSync update from calculation graph msg=
+2020-07-10 03:23:53.843 [INFO][58] int_dataplane.go 842: Datastore in sync, flushing the dataplane for the first time... timeSinceStart=173.157638ms
+2020-07-10 03:23:53.843 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:23:53.844 [INFO][58] endpoint_mgr.go 337: Workload interface came up, marking for reconfiguration. ifaceName="cali3e6ce77ec27"
+2020-07-10 03:23:53.844 [INFO][58] endpoint_mgr.go 337: Workload interface came up, marking for reconfiguration. ifaceName="calic58bd5e474f"
+2020-07-10 03:23:53.844 [INFO][58] endpoint_mgr.go 545: Updating per-endpoint chains. id=proto.WorkloadEndpointID{OrchestratorId:"k8s", WorkloadId:"kube-system/nvidia-device-plugin-daemonset-whc7f", EndpointId:"eth0"}
+2020-07-10 03:23:53.844 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-tw-cali3e6ce77ec27" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.844 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-fw-cali3e6ce77ec27" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.844 [INFO][58] endpoint_mgr.go 572: Updating endpoint routes. id=proto.WorkloadEndpointID{OrchestratorId:"k8s", WorkloadId:"kube-system/nvidia-device-plugin-daemonset-whc7f", EndpointId:"eth0"}
+2020-07-10 03:23:53.844 [INFO][58] endpoint_mgr.go 545: Updating per-endpoint chains. id=proto.WorkloadEndpointID{OrchestratorId:"k8s", WorkloadId:"rook-ceph/rook-discover-6bd2n", EndpointId:"eth0"}
+2020-07-10 03:23:53.844 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-tw-calic58bd5e474f" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.844 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-fw-calic58bd5e474f" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.845 [INFO][58] endpoint_mgr.go 572: Updating endpoint routes. id=proto.WorkloadEndpointID{OrchestratorId:"k8s", WorkloadId:"rook-ceph/rook-discover-6bd2n", EndpointId:"eth0"}
+2020-07-10 03:23:53.845 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-from-wl-dispatch" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.845 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-to-wl-dispatch" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.845 [INFO][58] endpoint_mgr.go 1016: Applying /proc/sys configuration to interface. ifaceName="cali3e6ce77ec27"
+2020-07-10 03:23:53.845 [INFO][58] endpoint_mgr.go 1016: Applying /proc/sys configuration to interface. ifaceName="calic58bd5e474f"
+2020-07-10 03:23:53.845 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-from-host-endpoint" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.845 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-to-host-endpoint" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.845 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-from-hep-forward" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.845 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-to-hep-forward" ipVersion=0x4 table="filter"
+2020-07-10 03:23:53.845 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-from-host-endpoint" ipVersion=0x4 table="mangle"
+2020-07-10 03:23:53.845 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-from-host-endpoint" ipVersion=0x4 table="raw"
+2020-07-10 03:23:53.846 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-to-host-endpoint" ipVersion=0x4 table="raw"
+2020-07-10 03:23:53.846 [INFO][58] endpoint_mgr.go 438: Re-evaluated workload endpoint status adminUp=true failed=false known=true operUp=true status="up" workloadEndpointID=proto.WorkloadEndpointID{OrchestratorId:"k8s", WorkloadId:"kube-system/nvidia-device-plugin-daemonset-whc7f", EndpointId:"eth0"}
+2020-07-10 03:23:53.846 [INFO][58] status_combiner.go 58: Storing endpoint status update ipVersion=0x4 status="up" workload=proto.WorkloadEndpointID{OrchestratorId:"k8s", WorkloadId:"kube-system/nvidia-device-plugin-daemonset-whc7f", EndpointId:"eth0"}
+2020-07-10 03:23:53.846 [INFO][58] endpoint_mgr.go 438: Re-evaluated workload endpoint status adminUp=true failed=false known=true operUp=true status="up" workloadEndpointID=proto.WorkloadEndpointID{OrchestratorId:"k8s", WorkloadId:"rook-ceph/rook-discover-6bd2n", EndpointId:"eth0"}
+2020-07-10 03:23:53.846 [INFO][58] status_combiner.go 58: Storing endpoint status update ipVersion=0x4 status="up" workload=proto.WorkloadEndpointID{OrchestratorId:"k8s", WorkloadId:"rook-ceph/rook-discover-6bd2n", EndpointId:"eth0"}
+2020-07-10 03:23:53.846 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-fip-dnat" ipVersion=0x4 table="nat"
+2020-07-10 03:23:53.846 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-fip-snat" ipVersion=0x4 table="nat"
+2020-07-10 03:23:53.846 [INFO][58] masq_mgr.go 144: IPAM pools updated, refreshing iptables rule ipVersion=0x4
+2020-07-10 03:23:53.846 [INFO][58] table.go 475: Queueing update of chain. chainName="cali-nat-outgoing" ipVersion=0x4 table="nat"
+2020-07-10 03:23:53.846 [INFO][58] ipip_mgr.go 222: All-hosts IP set out-of sync, refreshing it.
+2020-07-10 03:23:53.846 [INFO][58] ipsets.go 119: Queueing IP set for creation family="inet" setID="all-hosts-net" setType="hash:net"
+2020-07-10 03:23:53.846 [INFO][58] xdp_state.go 172: Resyncing XDP state with dataplane.
+2020-07-10 03:23:53.872 [INFO][58] int_dataplane.go 630: Linux interface addrs changed. addrs=set.mapSet{} ifaceName="calico_tmp_B"
+2020-07-10 03:23:53.872 [INFO][58] int_dataplane.go 630: Linux interface addrs changed. addrs=set.mapSet{} ifaceName="calico_tmp_A"
+2020-07-10 03:23:53.889 [INFO][58] int_dataplane.go 630: Linux interface addrs changed. addrs=<nil> ifaceName="calico_tmp_A"
+2020-07-10 03:23:53.889 [INFO][58] int_dataplane.go 630: Linux interface addrs changed. addrs=<nil> ifaceName="calico_tmp_B"
+2020-07-10 03:23:53.938 [INFO][58] xdp_state.go 561: Finished XDP resync. family=4 resyncDuration=15.930597ms
+2020-07-10 03:23:53.939 [INFO][58] route_table.go 247: Trying to connect to netlink
+2020-07-10 03:23:53.939 [INFO][58] ipsets.go 306: Resyncing ipsets with dataplane. family="inet"
+2020-07-10 03:23:53.940 [INFO][58] ipsets.go 356: Finished resync family="inet" numInconsistenciesFound=0 resyncDuration=1.099648ms
+2020-07-10 03:23:53.942 [INFO][58] ipsets.go 749: Doing full IP set rewrite family="inet" numMembersInPendingReplace=7 setID="all-hosts-net"
+2020-07-10 03:23:53.942 [INFO][58] ipsets.go 749: Doing full IP set rewrite family="inet" numMembersInPendingReplace=1 setID="all-ipam-pools"
+2020-07-10 03:23:53.942 [INFO][58] ipsets.go 749: Doing full IP set rewrite family="inet" numMembersInPendingReplace=1 setID="masq-ipam-pools"
+2020-07-10 03:23:53.942 [INFO][58] ipsets.go 749: Doing full IP set rewrite family="inet" numMembersInPendingReplace=4 setID="this-host"
+2020-07-10 03:23:54.013 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="raw"
+2020-07-10 03:23:54.015 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="nat"
+2020-07-10 03:23:54.019 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="mangle"
+2020-07-10 03:23:54.022 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="filter"
+2020-07-10 03:23:54.026 [INFO][58] table.go 607: Found unexpected chain, marking for cleanup chainName="cali-fw-cali98176374ab0" ipVersion=0x4 table="filter"
+2020-07-10 03:23:54.026 [INFO][58] table.go 607: Found unexpected chain, marking for cleanup chainName="cali-tw-calie893a27a0b4" ipVersion=0x4 table="filter"
+2020-07-10 03:23:54.026 [INFO][58] table.go 607: Found unexpected chain, marking for cleanup chainName="cali-fw-calie893a27a0b4" ipVersion=0x4 table="filter"
+2020-07-10 03:23:54.026 [INFO][58] table.go 607: Found unexpected chain, marking for cleanup chainName="cali-tw-cali98176374ab0" ipVersion=0x4 table="filter"
+2020-07-10 03:23:54.033 [INFO][58] status_combiner.go 81: Endpoint up for at least one IP version id=proto.WorkloadEndpointID{OrchestratorId:"k8s", WorkloadId:"rook-ceph/rook-discover-6bd2n", EndpointId:"eth0"} ipVersion=0x4 status="up"
+2020-07-10 03:23:54.033 [INFO][58] status_combiner.go 98: Reporting combined status. id=proto.WorkloadEndpointID{OrchestratorId:"k8s", WorkloadId:"rook-ceph/rook-discover-6bd2n", EndpointId:"eth0"} status="up"
+2020-07-10 03:23:54.033 [INFO][58] status_combiner.go 81: Endpoint up for at least one IP version id=proto.WorkloadEndpointID{OrchestratorId:"k8s", WorkloadId:"kube-system/nvidia-device-plugin-daemonset-whc7f", EndpointId:"eth0"} ipVersion=0x4 status="up"
+2020-07-10 03:23:54.034 [INFO][58] status_combiner.go 98: Reporting combined status. id=proto.WorkloadEndpointID{OrchestratorId:"k8s", WorkloadId:"kube-system/nvidia-device-plugin-daemonset-whc7f", EndpointId:"eth0"} status="up"
+2020-07-10 03:23:54.034 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=190.03403999999998
+2020-07-10 03:23:54.034 [INFO][58] int_dataplane.go 982: Completed first update to dataplane. secsSinceStart=0.363391279
+2020-07-10 03:23:54.035 [INFO][58] health.go 133: Health of component changed lastReport=health.HealthReport{Live:true, Ready:false} name="int_dataplane" newReport=&health.HealthReport{Live:true, Ready:true}
+2020-07-10 03:23:54.035 [INFO][58] int_dataplane.go 867: Received interface addresses update msg=&intdataplane.ifaceAddrsUpdate{Name:"calico_tmp_B", Addrs:set.mapSet{}}
+2020-07-10 03:23:54.035 [INFO][58] hostip_mgr.go 84: Interface addrs changed. update=&intdataplane.ifaceAddrsUpdate{Name:"calico_tmp_B", Addrs:set.mapSet{}}
+2020-07-10 03:23:54.035 [INFO][58] int_dataplane.go 867: Received interface addresses update msg=&intdataplane.ifaceAddrsUpdate{Name:"calico_tmp_A", Addrs:set.mapSet{}}
+2020-07-10 03:23:54.036 [INFO][58] hostip_mgr.go 84: Interface addrs changed. update=&intdataplane.ifaceAddrsUpdate{Name:"calico_tmp_A", Addrs:set.mapSet{}}
+2020-07-10 03:23:54.036 [INFO][58] int_dataplane.go 867: Received interface addresses update msg=&intdataplane.ifaceAddrsUpdate{Name:"calico_tmp_A", Addrs:set.Set(nil)}
+2020-07-10 03:23:54.036 [INFO][58] hostip_mgr.go 84: Interface addrs changed. update=&intdataplane.ifaceAddrsUpdate{Name:"calico_tmp_A", Addrs:set.Set(nil)}
+2020-07-10 03:23:54.036 [INFO][58] int_dataplane.go 867: Received interface addresses update msg=&intdataplane.ifaceAddrsUpdate{Name:"calico_tmp_B", Addrs:set.Set(nil)}
+2020-07-10 03:23:54.036 [INFO][58] hostip_mgr.go 84: Interface addrs changed. update=&intdataplane.ifaceAddrsUpdate{Name:"calico_tmp_B", Addrs:set.Set(nil)}
+2020-07-10 03:23:54.036 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:23:54.036 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=0.07791000000000001
+bird: device1: Initializing
+bird: direct1: Initializing
+bird: device1: Starting
+bird: device1: Connected to table master
+bird: device1: State changed to feed
+bird: direct1: Starting
+bird: direct1: Connected to table master
+bird: direct1: State changed to feed
+bird: Graceful restart started
+bird: Graceful restart done
+bird: Started
+bird: device1: State changed to up
+bird: direct1: State changed to up
+bird: device1: Initializing
+bird: direct1: Initializing
+bird: Mesh_192_168_0_114: Initializing
+bird: Mesh_192_168_0_180: Initializing
+bird: Mesh_192_168_0_34: Initializing
+bird: Mesh_192_168_0_91: Initializing
+bird: Mesh_192_168_0_168: Initializing
+bird: Mesh_192_168_0_95: Initializing
+bird: device1: Starting
+bird: device1: Connected to table master
+bird: device1: State changed to feed
+bird: direct1: Starting
+bird: direct1: Connected to table master
+bird: direct1: State changed to feed
+bird: Mesh_192_168_0_114: Starting
+bird: Mesh_192_168_0_114: State changed to start
+bird: Mesh_192_168_0_180: Starting
+bird: Mesh_192_168_0_180: State changed to start
+bird: Mesh_192_168_0_34: Starting
+bird: Mesh_192_168_0_34: State changed to start
+bird: Mesh_192_168_0_91: Starting
+bird: Mesh_192_168_0_91: State changed to start
+bird: Mesh_192_168_0_168: Starting
+bird: Mesh_192_168_0_168: State changed to start
+bird: Mesh_192_168_0_95: Starting
+bird: Mesh_192_168_0_95: State changed to start
+bird: Graceful restart started
+bird: Started
+bird: device1: State changed to up
+bird: direct1: State changed to up
+2020-07-10 03:23:54.714 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:23:54.715 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="mangle"
+2020-07-10 03:23:54.716 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="mangle"
+2020-07-10 03:23:54.717 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=2.8651750000000002
+2020-07-10 03:23:54.718 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:23:54.718 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="raw"
+2020-07-10 03:23:54.719 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="raw"
+2020-07-10 03:23:54.722 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=4.074668
+2020-07-10 03:23:55.035 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:23:55.035 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="filter"
+2020-07-10 03:23:55.035 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="nat"
+2020-07-10 03:23:55.037 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="filter"
+2020-07-10 03:23:55.038 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="nat"
+2020-07-10 03:23:55.047 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=12.153793
+2020-07-10 03:23:55.726 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:23:55.727 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="raw"
+2020-07-10 03:23:55.727 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="mangle"
+2020-07-10 03:23:55.728 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="raw"
+2020-07-10 03:23:55.729 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="mangle"
+2020-07-10 03:23:55.732 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=5.248663
+2020-07-10 03:23:56.037 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:23:56.037 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="nat"
+2020-07-10 03:23:56.037 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="filter"
+2020-07-10 03:23:56.040 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="nat"
+2020-07-10 03:23:56.044 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="filter"
+2020-07-10 03:23:56.055 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=17.861788
+bird: Mesh_192_168_0_91: Connected to table master
+bird: Mesh_192_168_0_91: State changed to wait
+bird: Mesh_192_168_0_34: Connected to table master
+bird: Mesh_192_168_0_34: State changed to wait
+bird: Mesh_192_168_0_114: Connected to table master
+bird: Mesh_192_168_0_114: State changed to wait
+bird: Mesh_192_168_0_168: Connected to table master
+bird: Mesh_192_168_0_168: State changed to wait
+bird: Mesh_192_168_0_180: Connected to table master
+bird: Mesh_192_168_0_180: State changed to wait
+bird: Mesh_192_168_0_95: Connected to table master
+bird: Mesh_192_168_0_95: State changed to wait
+bird: Graceful restart done
+bird: Mesh_192_168_0_114: State changed to feed
+bird: Mesh_192_168_0_180: State changed to feed
+bird: Mesh_192_168_0_34: State changed to feed
+bird: Mesh_192_168_0_91: State changed to feed
+bird: Mesh_192_168_0_168: State changed to feed
+bird: Mesh_192_168_0_95: State changed to feed
+bird: Mesh_192_168_0_114: State changed to up
+bird: Mesh_192_168_0_180: State changed to up
+bird: Mesh_192_168_0_34: State changed to up
+bird: Mesh_192_168_0_91: State changed to up
+bird: Mesh_192_168_0_168: State changed to up
+bird: Mesh_192_168_0_95: State changed to up
+2020-07-10 03:23:57.732 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:23:57.732 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="raw"
+2020-07-10 03:23:57.732 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="mangle"
+2020-07-10 03:23:57.735 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="raw"
+2020-07-10 03:23:57.738 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="mangle"
+2020-07-10 03:23:57.744 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=12.112991
+2020-07-10 03:23:57.866 [INFO][58] health.go 196: Overall health status changed newStatus=&health.HealthReport{Live:true, Ready:true}
+2020-07-10 03:23:58.043 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:23:58.044 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="nat"
+2020-07-10 03:23:58.044 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="filter"
+2020-07-10 03:23:58.047 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="nat"
+2020-07-10 03:23:58.051 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="filter"
+2020-07-10 03:23:58.079 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=36.020759
+2020-07-10 03:24:01.750 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:01.751 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="raw"
+2020-07-10 03:24:01.751 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="mangle"
+2020-07-10 03:24:01.755 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="raw"
+2020-07-10 03:24:01.760 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="mangle"
+2020-07-10 03:24:01.762 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=11.202793000000002
+2020-07-10 03:24:02.042 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:02.043 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="filter"
+2020-07-10 03:24:02.043 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="nat"
+2020-07-10 03:24:02.046 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="filter"
+2020-07-10 03:24:02.050 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="nat"
+2020-07-10 03:24:02.088 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=45.378596
+2020-07-10 03:24:04.262 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:04.262 [INFO][58] ipsets.go 223: Asked to resync with the dataplane on next update. family="inet"
+2020-07-10 03:24:04.262 [INFO][58] ipsets.go 306: Resyncing ipsets with dataplane. family="inet"
+2020-07-10 03:24:04.266 [INFO][58] ipsets.go 356: Finished resync family="inet" numInconsistenciesFound=0 resyncDuration=3.500883ms
+2020-07-10 03:24:04.266 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=4.4792369999999995
+2020-07-10 03:24:09.715 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:09.715 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="mangle"
+2020-07-10 03:24:09.719 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="mangle"
+2020-07-10 03:24:09.725 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=10.244389
+2020-07-10 03:24:09.725 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:09.726 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="raw"
+2020-07-10 03:24:09.729 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="raw"
+2020-07-10 03:24:09.737 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=11.117191
+2020-07-10 03:24:10.042 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:10.043 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="filter"
+2020-07-10 03:24:10.043 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="nat"
+2020-07-10 03:24:10.048 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="filter"
+2020-07-10 03:24:10.049 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="nat"
+2020-07-10 03:24:10.059 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=16.107973
+2020-07-10 03:24:14.712 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:14.713 [INFO][58] ipsets.go 223: Asked to resync with the dataplane on next update. family="inet"
+2020-07-10 03:24:14.713 [INFO][58] ipsets.go 306: Resyncing ipsets with dataplane. family="inet"
+2020-07-10 03:24:14.716 [INFO][58] ipsets.go 356: Finished resync family="inet" numInconsistenciesFound=0 resyncDuration=3.006207ms
+2020-07-10 03:24:14.716 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=3.7624199999999997
+2020-07-10 03:24:25.075 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:25.076 [INFO][58] ipsets.go 223: Asked to resync with the dataplane on next update. family="inet"
+2020-07-10 03:24:25.076 [INFO][58] ipsets.go 306: Resyncing ipsets with dataplane. family="inet"
+2020-07-10 03:24:25.079 [INFO][58] ipsets.go 356: Finished resync family="inet" numInconsistenciesFound=0 resyncDuration=2.979172ms
+2020-07-10 03:24:25.079 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=3.7901979999999997
+2020-07-10 03:24:25.715 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:25.715 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="mangle"
+2020-07-10 03:24:25.718 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="mangle"
+2020-07-10 03:24:25.724 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=9.672926
+2020-07-10 03:24:25.725 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:25.725 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="raw"
+2020-07-10 03:24:25.731 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="raw"
+2020-07-10 03:24:25.739 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=14.414888000000001
+2020-07-10 03:24:26.046 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:26.046 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="nat"
+2020-07-10 03:24:26.046 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="filter"
+2020-07-10 03:24:26.049 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="nat"
+2020-07-10 03:24:26.053 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="filter"
+2020-07-10 03:24:26.064 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=18.38244
+2020-07-10 03:24:35.560 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:35.560 [INFO][58] ipsets.go 223: Asked to resync with the dataplane on next update. family="inet"
+2020-07-10 03:24:35.560 [INFO][58] ipsets.go 306: Resyncing ipsets with dataplane. family="inet"
+2020-07-10 03:24:35.563 [INFO][58] ipsets.go 356: Finished resync family="inet" numInconsistenciesFound=0 resyncDuration=2.96523ms
+2020-07-10 03:24:35.564 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=3.658564
+2020-07-10 03:24:37.524 [INFO][58] iface_monitor.go 173: Netlink address update. addr="192.168.0.134" exists=true ifIndex=2
+2020-07-10 03:24:45.821 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:45.821 [INFO][58] ipsets.go 223: Asked to resync with the dataplane on next update. family="inet"
+2020-07-10 03:24:45.821 [INFO][58] ipsets.go 306: Resyncing ipsets with dataplane. family="inet"
+2020-07-10 03:24:45.825 [INFO][58] ipsets.go 356: Finished resync family="inet" numInconsistenciesFound=0 resyncDuration=2.980541ms
+2020-07-10 03:24:45.825 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=3.7331130000000003
+2020-07-10 03:24:56.654 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:56.654 [INFO][58] ipsets.go 223: Asked to resync with the dataplane on next update. family="inet"
+2020-07-10 03:24:56.654 [INFO][58] ipsets.go 306: Resyncing ipsets with dataplane. family="inet"
+2020-07-10 03:24:56.657 [INFO][58] ipsets.go 356: Finished resync family="inet" numInconsistenciesFound=0 resyncDuration=2.896707ms
+2020-07-10 03:24:56.658 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=4.443372
+2020-07-10 03:24:57.715 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:57.716 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="raw"
+2020-07-10 03:24:57.716 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="mangle"
+2020-07-10 03:24:57.719 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="raw"
+2020-07-10 03:24:57.723 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="mangle"
+2020-07-10 03:24:57.729 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=13.084481
+2020-07-10 03:24:58.044 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:24:58.045 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="filter"
+2020-07-10 03:24:58.045 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="nat"
+2020-07-10 03:24:58.048 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="filter"
+2020-07-10 03:24:58.055 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="nat"
+2020-07-10 03:24:58.086 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=41.561840000000004
+2020-07-10 03:25:06.846 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:25:06.847 [INFO][58] ipsets.go 223: Asked to resync with the dataplane on next update. family="inet"
+2020-07-10 03:25:06.847 [INFO][58] ipsets.go 306: Resyncing ipsets with dataplane. family="inet"
+2020-07-10 03:25:06.850 [INFO][58] ipsets.go 356: Finished resync family="inet" numInconsistenciesFound=0 resyncDuration=2.847061ms
+2020-07-10 03:25:06.850 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=3.542476
+2020-07-10 03:25:17.699 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:25:17.700 [INFO][58] ipsets.go 223: Asked to resync with the dataplane on next update. family="inet"
+2020-07-10 03:25:17.700 [INFO][58] ipsets.go 306: Resyncing ipsets with dataplane. family="inet"
+2020-07-10 03:25:17.703 [INFO][58] ipsets.go 356: Finished resync family="inet" numInconsistenciesFound=0 resyncDuration=2.862841ms
+2020-07-10 03:25:17.703 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=3.588676
+2020-07-10 03:25:26.252 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:25:26.252 [INFO][58] route_table.go 237: Queueing a resync of routing table. ipVersion=0x4
+2020-07-10 03:25:26.254 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=2.3191599999999997
+2020-07-10 03:25:28.510 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:25:28.510 [INFO][58] ipsets.go 223: Asked to resync with the dataplane on next update. family="inet"
+2020-07-10 03:25:28.510 [INFO][58] ipsets.go 306: Resyncing ipsets with dataplane. family="inet"
+2020-07-10 03:25:28.513 [INFO][58] ipsets.go 356: Finished resync family="inet" numInconsistenciesFound=0 resyncDuration=2.864884ms
+2020-07-10 03:25:28.514 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=3.752544
+2020-07-10 03:25:30.326 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:25:30.326 [INFO][58] xdp_state.go 172: Resyncing XDP state with dataplane.
+2020-07-10 03:25:30.340 [INFO][58] xdp_state.go 561: Finished XDP resync. family=4 resyncDuration=14.110519ms
+2020-07-10 03:25:30.340 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=14.317498
+2020-07-10 03:25:38.744 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:25:38.744 [INFO][58] ipsets.go 223: Asked to resync with the dataplane on next update. family="inet"
+2020-07-10 03:25:38.744 [INFO][58] ipsets.go 306: Resyncing ipsets with dataplane. family="inet"
+2020-07-10 03:25:38.748 [INFO][58] ipsets.go 356: Finished resync family="inet" numInconsistenciesFound=0 resyncDuration=3.744512ms
+2020-07-10 03:25:38.749 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=4.765257
+2020-07-10 03:25:49.626 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:25:49.626 [INFO][58] ipsets.go 223: Asked to resync with the dataplane on next update. family="inet"
+2020-07-10 03:25:49.626 [INFO][58] ipsets.go 306: Resyncing ipsets with dataplane. family="inet"
+2020-07-10 03:25:49.629 [INFO][58] ipsets.go 356: Finished resync family="inet" numInconsistenciesFound=0 resyncDuration=2.538099ms
+2020-07-10 03:25:49.629 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=3.145408
+2020-07-10 03:25:59.857 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:25:59.857 [INFO][58] ipsets.go 223: Asked to resync with the dataplane on next update. family="inet"
+2020-07-10 03:25:59.857 [INFO][58] ipsets.go 306: Resyncing ipsets with dataplane. family="inet"
+2020-07-10 03:25:59.860 [INFO][58] ipsets.go 356: Finished resync family="inet" numInconsistenciesFound=0 resyncDuration=2.69443ms
+2020-07-10 03:25:59.860 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=3.3877859999999997
+2020-07-10 03:26:01.715 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:26:01.715 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="mangle"
+2020-07-10 03:26:01.718 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="mangle"
+2020-07-10 03:26:01.725 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=10.03895
+2020-07-10 03:26:01.725 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:26:01.726 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="raw"
+2020-07-10 03:26:01.728 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="raw"
+2020-07-10 03:26:01.737 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=11.957466
+2020-07-10 03:26:02.043 [INFO][58] int_dataplane.go 962: Applying dataplane updates
+2020-07-10 03:26:02.043 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="filter"
+2020-07-10 03:26:02.044 [INFO][58] table.go 830: Invalidating dataplane cache ipVersion=0x4 reason="post update" table="nat"
+2020-07-10 03:26:02.047 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="filter"
+2020-07-10 03:26:02.050 [INFO][58] table.go 518: Loading current iptables state and checking it is correct. ipVersion=0x4 table="nat"
+2020-07-10 03:26:02.087 [INFO][58] int_dataplane.go 976: Finished applying updates to dataplane. msecToApply=43.688046
