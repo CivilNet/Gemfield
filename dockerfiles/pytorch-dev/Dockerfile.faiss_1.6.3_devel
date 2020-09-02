@@ -1,0 +1,16 @@
+#Ubuntu 18.04
+FROM gemfield/pytorch:1.6.0-devel
+LABEL maintainer "Gemfield <gemfield@civilnet.cn>"
+
+WORKDIR /gemfield
+RUN git clone https://github.com/facebookresearch/faiss && \
+    cd faiss && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make VERBOSE=1 && \
+    make install && \
+    cd faiss/python && \
+    python setup.py install && \
+    cd ../../ && \
+    make clean
