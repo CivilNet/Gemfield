@@ -1,0 +1,35 @@
+#Ubuntu 18.04
+FROM pytorch/pytorch:1.6.0-cuda10.1-cudnn7-devel
+LABEL maintainer "Gemfield <gemfield@civilnet.cn>"
+#wa for Clearsigned file isn't valid, got 'NOSPLIT'
+RUN mv /etc/apt/sources.list.d/cuda.list /etc/apt/sources.list.d/cuda.list.bk && mv /etc/apt/sources.list.d/nvidia-ml.list /etc/apt/sources.list.d/nvidia-ml.list.bk
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        vim locales libglib2.0-0 libsm6 libxrender1 libxext6 net-tools iputils-ping git g++ swig \
+        python-pybind11 wget apt-transport-https ca-certificates gnupg software-properties-common \
+        libopenblas-dev
+
+#for latest cmake version, and for Faiss build.
+RUN wget -qO - https://apt.kitware.com/keys/kitware-archive-latest.asc |  apt-key add -
+RUN apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main' && \
+    apt-get update && apt-get install -y --no-install-recommends cmake
+
+#python3
+RUN pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple numpy opencv_python confluent_kafka easydict bcolz sklearn matplotlib tensorboard
+RUN pip install --no-cache-dir deepvac
+
+WORKDIR /gemfield
+# RUN git clone https://github.com/facebookresearch/faiss && \
+#     cd faiss && \
+#     mkdir build && \
+#     cd build && \
+#     cmake .. && \
+#     make VERBOSE=1 && \
+#     make install && \
+#     cd faiss/python && \
+#     python setup.py install && \
+#     cd - &&
+#     make clean
+
+RUN locale-gen zh_CN.utf8
+ENV TZ=Asia/Shanghai
+ENV LANG=zh_CN.utf8
