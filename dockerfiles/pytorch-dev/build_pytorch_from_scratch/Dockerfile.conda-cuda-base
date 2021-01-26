@@ -1,0 +1,9 @@
+FROM nvidia/cuda:11.1.1-cudnn8-devel-ubuntu20.04 as base
+  
+RUN apt update && DEBIAN_FRONTEND="noninteractive" \
+    apt install -y vim wget curl perl util-linux bzip2 git patch unzip g++ binutils cmake autoconf automake make sudo locales
+RUN ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && dpkg-reconfigure -f noninteractive tzdata && locale-gen zh_CN.utf8
+
+ENV LC_ALL zh_CN.UTF-8
+ENV LANG zh_CN.UTF-8
+ENV LANGUAGE zh_CN.UTF-8
