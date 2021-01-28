@@ -1,0 +1,8 @@
+FROM gemfield/cuda:11.0.3-cudnn8-devel-ubuntu20.04
+LABEL maintainer "Gemfield <gemfield@civilnet.cn>"
+
+RUN conda install -y pytorch -c gemfield && conda clean -ya
+
+WORKDIR /gemfield
+COPY vision /gemfield/
+RUN cd /gemfield/vision && pip install -v . && rm -rf /gemfield/vision
