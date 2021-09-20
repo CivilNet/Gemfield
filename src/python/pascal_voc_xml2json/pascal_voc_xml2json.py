@@ -143,7 +143,7 @@ def parseXmlFiles(xml_path):
                     if current_sub == 'bndbox':
                         if bndbox[option.tag] is not None:
                             raise Exception('xml structure corrupted at bndbox tag.')
-                        bndbox[option.tag] = int(option.text)
+                        bndbox[option.tag] = float(option.text)
 
                 #only after parse the <object> tag
                 if bndbox['xmin'] is not None:
@@ -166,7 +166,8 @@ def parseXmlFiles(xml_path):
                     addAnnoItem(object_name, current_image_id, current_category_id, bbox )
 
 if __name__ == '__main__':
-    xml_path = 'Annotations'
-    json_file = 'instances.json'
+#    xml_path = 'Annotations'
+    xml_path ="D:\\ROCSAFE\\Datasets\\annotations\\Test_v1_7_classes-PascalVOC-export\\Annotations"
+    json_file = 'instances_val_2.json'
     parseXmlFiles(xml_path)
     json.dump(coco, open(json_file, 'w'))
